@@ -1,0 +1,6 @@
+<!--pages/test/test.wxml-->
+<import src="../../wxParse/wxParse.wxml" />
+<import src="../../templates/header.wxml" />
+ <view class="entry-summary">
+      <template is="wxParse" data="{{wxParseData:article.nodes}}" />
+</view>

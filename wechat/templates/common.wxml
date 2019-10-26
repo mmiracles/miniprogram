@@ -1,0 +1,42 @@
+<template name="List">
+  <view class="list">
+    <block wx:key="id" wx:for="{{postsList}}">
+    <!-- 文章id -->
+      <view class="list-item" index="{{index}}" id="{{item.id}}" bindtap="redictDetail">
+	      <view class="content">
+          <!--文章显示的缩略图  -->
+          <image wx:if="{{item.thumbnail}}" src="{{item.thumbnail}}" mode="aspectFill" class="cover"></image>
+          <image wx:else src="{{item.meta.thumbnail}}" mode="aspectFill" class="cover"></image>
+
+          <!-- 文章名 -->
+          <view class="title"> 
+            <text>{{item.title}}</text>   
+          </view>
+        
+          <view class="information">
+            <!-- 分类 -->
+            <view class="meta">
+              <image src="../../images/category-o.png"></image>
+              <text>{{item.classify}}</text>
+            </view>
+            <!-- 标签 -->
+            <view class="meta">
+              <image src="../../images/views-o.png"></image>
+              <text>{{item.tag}}</text>
+            </view>
+            <!-- 浏览数 -->
+            <view class="meta">
+              <image src="../../images/comments-o.png"></image>
+              <text>{{item.pageView}}</text>
+            </view>
+            <!-- 点赞数 -->
+            <view class="meta">
+              <image src="../../images/heart-o.png"></image>
+              <text>{{item.greatNum}}</text>
+            </view>
+          </view>
+		    </view>
+      </view>
+    </block>
+  </view>  
+</template>

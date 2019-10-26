@@ -1,0 +1,71 @@
+<!--pages/detail/detail.wxml-->
+<import src="../../wxParse/wxParse.wxml" />
+<import src="../../templates/header.wxml" />
+<view class="container">
+  <!--内容详情-->
+  <view class="content-article-detail {{display}}">
+    <view class="entry-title">
+      <!-- 文章标题名 -->
+      <text>{{detail.title}}</text>
+    </view>
+    <view class="entry-meta">
+      <!-- 发布时间 -->
+      <image src="../../images/calendar-o.png"></image>
+      <text class="entry-icon-text">{{detailDate}}</text>
+      <block wx:if="{{detail.category !=null}}">
+        <!-- 分类 -->
+        <image src="../../images/category-o.png"></image>
+        <text class="entry-icon-text">{{detail.classsify}}</text>
+        <!-- 标签 -->
+        <image src="../../images/comments-o.png"></image>
+        <text class="entry-icon-text">{{detail.tag}}</text>
+        <!-- 浏览数 -->
+        <image src="../../images/views-o.png"></image>
+        <text class="entry-icon-text">{{detail.pageView}}</text>
+        <!-- 点赞数量 -->
+        <image src="../../images/heart-o.png"></image>
+        <text class="entry-icon-text">{{thumbsCount}}</text>
+      </block>
+    </view>
+    <view class="entry-summary">
+      <template is="wxParse" data="{{wxParseData:article.nodes}}" />
+    </view>
+  </view>
+  <view class="thumbsUp">
+    <view class="Showthumbs">
+      <button class="thumbs-button" size="mini" catchtap="thumbsUpClick">
+        <image src="../../images/zan.png" class="thumbsImg"></image>点赞</button>
+      <button class="collect-button" size="mini" catchtap="thumbsUpClick">
+        <image src="../../images/views-o.png" class="thumbsImg"></image>收藏</button>
+    </view>
+  </view>
+
+
+  <!-- 返回主页面 转发 -->
+  <view class="{{display}}">
+    <view class="comment-fixed">
+      <form catchsubmit="formSubmit" report-submit="true">
+        <view class="comment-respond">
+          <input class="comment-input-id" maxlength="100" name="inputPostID" value="{{detail.id}}" />
+          <view class="comment-box">
+            <!-- 返回主页面 -->
+            <view class="tabHome" catchtap="goHome" style="margin-left:560rpx;">
+              <image src="../../images/home-t.png" class="tabImg"></image>
+            </view>
+            <!-- 转发分享页面 -->
+            <view class="share">
+              <image src="../../images/share.png" class="tabImg"></image>
+              <button class="t-button" open-type="share"></button>
+            </view>
+          </view>
+        </view>
+      </form>
+    </view>
+  </view>
+
+</view>
+
+
+<view class="canvas-box">
+  <canvas style="width: 600px;height: 970px;" canvas-id="prefix" />
+</view>

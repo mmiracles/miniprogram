@@ -1,0 +1,38 @@
+/* pages/test/test.wxss */
+@import "../../wxParse/wxParse.wxss";
+.entry-title {
+  outline: none;
+  color: #3a4040;
+  font-size: 42rpx;
+  line-height: 1.6;
+  font-weight: bold;
+  margin-bottom: 24rpx; 
+}
+.entry-summary {
+  font-size: 32rpx;
+  line-height: 1.6;
+  letter-spacing: 1px;
+}
+.entry-summary image {
+  width: 100% !important;
+}
+.entry-meta {
+  outline: none;
+  color: #959595;
+  font-size: 28rpx;
+  line-height: 1.6;
+  font-weight: normal;
+  margin-bottom: 20rpx;
+  padding-bottom: 10rpx;
+  border-bottom:1px solid #eee;
+}
+.entry-meta image {
+  width:22rpx;
+  height:22rpx;
+}
+.entry-icon-text {
+  margin: 0 10rpx;
+}
+.entry-category-text {
+  margin-left: 20rpx;
+}

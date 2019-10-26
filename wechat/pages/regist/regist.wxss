@@ -1,0 +1,22 @@
+/* pages/regist/regist.wxss */
+/* 提交按钮 */
+.submit-button{
+  width: 50%;
+}
+
+.required-icon{  /* 必填标志 */
+  padding: 0px;
+  font-size: 50rpx;
+  background-color: white;
+  color: #e64340;
+}
+
+.checkBox{
+  margin: 0rpx 10px 5px 0rpx;
+  font-size: 34rpx;
+}
+
+radio .wx-radio-input{  /* radio选择框大小 */
+  width: 34rpx;
+  height: 34rpx;
+}

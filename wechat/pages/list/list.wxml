@@ -1,125 +1,63 @@
+<!--pages/list/list.wxml-->
+<import src="../../templates/common.wxml" />
+<scroll-view class="scrollview" scroll-y="true" lower-threshold="100rpx">
+  <block wx:if="{{isCategory}}">
+    <view class="topic-common-list">
+      <view class="topic-list-item">
+        <!-- 分类的名字 -->
+        <image src="{{categoriesImage}}" class="cover"></image>
+        <view class="topic-content-title">
+          <text>{{categoriesList.name}}</text>
+        </view>
+        <!-- 分类的描述 -->
+        <view class="topic-content-title-line"></view>
+        <view class="topic-content-brief">
+          <text>{{categoriesList.description}}</text>
+        </view>
+      </view>
+    </view>
+  </block>
 
-<view class="randomHeader">
-  <view class="random-header">
-    <image src="/images/random.png" class="cover"></image>
-    <view class="random-header-title">
-      <text>发现•好玩•有趣</text>
+  <!-- 查询列表的显示 -->
+  <block wx:if="{{isSearch}}">
+    <view class="topic-common-list">
+      <view class="topic-list-item">
+        <view>
+          <image src="../../images/SearchImage.png" class="cover"></image>
+        </view>
+        <view class="topic-content-title">
+          <text class="searchKey">{{isKeyword}}</text>
+        </view>
+        <view class="topic-content-title-line"></view>
+        <view class="topic-content-brief">
+          <text> 全文搜索关键字：{{isKeyword}} </text>
+        </view>
+      </view>
     </view>
-    <view class="random-header-des">
-      <text>好玩有趣旅行，就在这里发生</text>
+  </block>
+
+  <!-- list列表中的文章显示  将传过来的list放入postList变量中 -->
+  <view class="container">
+    <view class="{{isDisplay}}">
+      <template is="List" data="{{postsList}}" />
+      <block wx:if="{{isMore}}">
+        <view class="load-more">
+          <view class="no-more" hidden="{{!isLastPage}}">--- 无更多文章 ---</view>
+        </view>
+      </block>
     </view>
+
+    
+    <block wx:if="{{loading}}">
+      <view class="error">
+        <image src="../../images/error.png" class="errImage"></image>
+        <view class="tips">
+          无法访问, 请重新尝试...
+        </view>
+        <view class="reload">
+          <button class="reload-button" size="mini" bindtap="reLoad"> 重新加载 </button>
+        </view>
+      </view>
+    </block>
   </view>
-</view>
-<view class="list-page">
-   <view class="title">附近发现</view> 
-    <view class="article-list">
-        <view class="article-item">
-            <image src="/imgs/test.png" class="article-img"></image>
-            <view class="article-info-box">
-                <view class="article-title-box">
-                    <image class="article-icon" src="/imgs/icon.png"></image>
-                    <view class="article-title">省博物馆</view>
-                </view>
-                <view class="article-text">武汉 哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈韩哈日呵呵</view>
-                <view class="article-bottom">
-                    <image src="/imgs/icon.png"></image>
-                    <view class="article-user-box">
-                        <view class="article-user">哈哈哈</view>
-                        <view class="article-date">2019-08-10</view>
-                    </view>
-                    <text>❤ 49</text>
-                </view>
-            </view>
-        </view>
-        <view class="article-item">
-            <image src="/imgs/test.png" class="article-img"></image>
-            <view class="article-info-box">
-                <view class="article-title-box">
-                    <image class="article-icon" src="/imgs/icon.png"></image>
-                    <view class="article-title">省博物馆</view>
-                </view>
-                <view class="article-text">武汉 哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈韩哈日呵呵</view>
-                <view class="article-bottom">
-                    <image src="/imgs/icon.png"></image>
-                    <view class="article-user-box">
-                        <view class="article-user">哈哈哈</view>
-                        <view class="article-date">2019-08-10</view>
-                    </view>
-                    <text>❤ 49</text>
-                </view>
-            </view>
-        </view>
-        <view class="article-item">
-            <image src="/imgs/test.png" class="article-img"></image>
-            <view class="article-info-box">
-                <view class="article-title-box">
-                    <image class="article-icon" src="/imgs/icon.png"></image>
-                    <view class="article-title">省博物馆</view>
-                </view>
-                <view class="article-text">武汉 哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈韩哈日呵呵</view>
-                <view class="article-bottom">
-                    <image src="/imgs/icon.png"></image>
-                    <view class="article-user-box">
-                        <view class="article-user">哈哈哈</view>
-                        <view class="article-date">2019-08-10</view>
-                    </view>
-                    <text>❤ 49</text>
-                </view>
-            </view>
-        </view>
-        <view class="article-item">
-            <image src="/imgs/test.png" class="article-img"></image>
-            <view class="article-info-box">
-                <view class="article-title-box">
-                    <image class="article-icon" src="/imgs/icon.png"></image>
-                    <view class="article-title">省博物馆</view>
-                </view>
-                <view class="article-text">武汉 哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈韩哈日呵呵</view>
-                <view class="article-bottom">
-                    <image src="/imgs/icon.png"></image>
-                    <view class="article-user-box">
-                        <view class="article-user">哈哈哈</view>
-                        <view class="article-date">2019-08-10</view>
-                    </view>
-                    <text>❤ 49</text>
-                </view>
-            </view>
-        </view>
-        <view class="article-item">
-            <image src="/imgs/test.png" class="article-img"></image>
-            <view class="article-info-box">
-                <view class="article-title-box">
-                    <image class="article-icon" src="/imgs/icon.png"></image>
-                    <view class="article-title">省博物馆</view>
-                </view>
-                <view class="article-text">武汉 哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈韩哈日呵呵</view>
-                <view class="article-bottom">
-                    <image src="/imgs/icon.png"></image>
-                    <view class="article-user-box">
-                        <view class="article-user">哈哈哈</view>
-                        <view class="article-date">2019-08-10</view>
-                    </view>
-                    <text>❤ 49</text>
-                </view>
-            </view>
-        </view>
-        <view class="article-item">
-            <image src="/imgs/test.png" class="article-img"></image>
-            <view class="article-info-box">
-                <view class="article-title-box">
-                    <image class="article-icon" src="/imgs/icon.png"></image>
-                    <view class="article-title">省博物馆</view>
-                </view>
-                <view class="article-text">武汉 哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈韩哈日呵呵</view>
-                <view class="article-bottom">
-                    <image src="/imgs/icon.png"></image>
-                    <view class="article-user-box">
-                        <view class="article-user">哈哈哈</view>
-                        <view class="article-date">2019-08-10</view>
-                    </view>
-                    <text>❤ 49</text>
-                </view>
-            </view>
-        </view>
-    </view>
-</view>
+</scroll-view>

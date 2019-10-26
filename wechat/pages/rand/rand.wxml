@@ -1,0 +1,57 @@
+<!--pages/rand/rand.wxml-->
+<scroll-view class="scrollview" scroll-y="true" lower-threshold="100rpx">
+<view class="randomHeader">
+  <view class="random-header">
+    <image src="../../images/random.png" class="cover"></image>
+    <view class="random-header-title">
+      <text>发现•好玩•有趣</text>
+    </view>
+    <view class="random-header-des">
+      <text>文艺的武汉景点，就在这里寻找</text>
+    </view>
+  </view>
+</view>
+<view class="container">
+  <!-- 加载图文列表 -->
+  <view class="random">
+    <block wx:key="id" wx:for="{{postsList}}">
+      <view class="list-item" index="{{index}}" id="{{item.id}}" bindtap="redictDetail">
+	      <view class="content">
+          <!-- 背景图片 -->
+          <view class="background"></view>
+          <image wx:if="{{item.thumbnail}}" src="{{item.thumbnail}}" mode="aspectFill" class="cover"></image>
+          <image wx:else src="{{item.meta.thumbnail}}" mode="aspectFill" class="cover"></image>
+          <view class="title">
+            <!-- 文章名 -->
+            <text>{{item.title}}</text>    
+          </view>
+          <view class="information">
+            <!-- 类别 -->
+            <view class="category">
+              <image src="../../images/category.png"></image>
+              <text>{{item.classify}}</text>
+            </view>
+            <!-- 点赞数 -->
+            <view class="view">
+              <image src="../../images/hot.png"></image>
+              <text>{{item.greatNum}}</text>
+            </view>
+            <!-- 浏览数 -->
+            <view class="comments">
+              <image src="../../images/comments.png"></image>
+              <text>{{item.pageView}}</text>
+            </view>
+          </view>
+		    </view>
+      </view>
+    </block>
+  </view>
+</view>
+<view class="error {{loading}}">
+  <image src="../../images/error.png" class="errImage"></image>
+  <view class="errortext">
+    无法访问, 下拉重试...
+  </view>
+</view>
+<!--Error-End-->
+</scroll-view>

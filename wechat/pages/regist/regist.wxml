@@ -1,0 +1,105 @@
+<!--pages/regist.wxml-->
+<view wx:if="{{loadingCompleted}}">
+  <form bindsubmit='regist'>
+    <view class='weui-cells weui-cells_after-title'>
+      <!-- 账号 -->
+      <view class='weui-cell weui-cell_input'>
+        <view class="weui-cell__hd">
+          <view class='weui-label' style="color:{{illegalError[0]? 'red' : 'black'}};">账号
+            <view class="weui-badge required-icon">*</view>
+          </view>
+        </view>
+        <view class="weui-cell__bd">
+          <input class="weui-input" name="username" id="0" placeholder='请输入账号' bindinput="cancelIllegalError" />
+        </view>
+        <view class="weui-cell__ft">
+          <icon wx:if="{{illegalError[0]}}" type="warn" size="23" color="#E64340"></icon>
+        </view>
+      </view>
+
+      <!-- 昵称 -->
+      <view class='weui-cell weui-cell_input'>
+        <view class="weui-cell__hd">
+          <view class='weui-label' style="color:{{illegalError[1]? 'red' : 'black'}};">昵称
+            <view class="weui-badge required-icon">*</view>
+          </view>
+        </view>
+        <view class="weui-cell__bd">
+          <input class="weui-input" name="nickname" id="1" placeholder='请输入昵称' bindinput="cancelIllegalError" />
+        </view>
+        <view class="weui-cell__ft">
+          <icon wx:if="{{illegalError[0]}}" type="warn" size="23" color="#E64340"></icon>
+        </view>
+      </view>
+
+      <!-- 性别 -->
+      <view class="weui-cell">
+        <view class=" weui-cell__hd">
+          <view class="weui-label">性别
+            <view class="weui-badge required-icon">*</view>
+          </view>
+        </view>
+        <view class="weui-cell__bd">
+          <radio-group name='usersex' id='3' bindchange="bindRadioBoxChange">
+            <radio wx:for='{{sexgroup}}' wx:key="*this " wx:for-index="radioIndex" class='checkBox' checked="{{item.checked}}" value='{{item.value}}'>{{item.value}}</radio>
+          </radio-group>
+        </view>
+      </view>
+
+      <!-- 密码 -->
+      <view class='weui-cell weui-cell_input'>
+        <view class="weui-cell__hd ">
+          <view class='weui-label' style="color:{{illegalError[3]? 'red' : 'black'}};">密码
+            <view class="weui-badge required-icon">*</view>
+          </view>
+        </view>
+        <view class="weui-cell__bd ">
+          <input class="weui-input" name="password" id="3" password='true' placeholder='请输入密码' bindinput="cancelIllegalError" />
+        </view>
+        <view class="weui-cell__ft ">
+          <icon wx:if="{{illegalError[0]}}" type="warn" size="23" color="#E64340"></icon>
+        </view>
+      </view>
+
+      <!-- 确认密码 -->
+      <view class='weui-cell weui-cell_input'>
+        <view class="weui-cell__hd ">
+          <view class='weui-label' style="color:{{illegalError[4]? 'red' : 'black'}}; ">确认密码
+            <view class="weui-badge required-icon">*</view>
+          </view>
+        </view>
+        <view class="weui-cell__bd ">
+          <input class="weui-input" name="confirmPassword" id="4" password='true' placeholder='重新输入密码' bindinput="cancelIllegalError" />
+        </view>
+        <view class="weui-cell__ft ">
+          <icon wx:if="{{illegalError[0]}}" type="warn" size="23" color="#E64340"></icon>
+        </view>
+      </view>
+
+      <view class="weui-media-box weui-media-box_text text-area">
+        <view class="weui-media-box__title weui-media-box__title_in-text" style="word-wrap: break-word;">
+          <view class="weui-label" style="width:100%; white-space: normal;">个性签名
+          </view>
+        </view>
+        <view class="weui-media-box__desc">
+          <textarea class="weui-textarea" style="height: 4em; color:black;font-size:32rpx;" placeholder="请输入个性签名" id='5' name='personaltext' value='{{personaltext}}' data-index='{{index}}'
+            bindinput='bindTextAreaInput' maxlength='50'/>
+          <view class="weui-textarea-counter">{{textnum}}/50</view>
+        </view>
+      </view>
+
+    </view>
+      <!-- 绑定微信 -->
+      <checkbox-group name="bindWechat">
+        <view class="weui-agree">
+          <view class="weui-agree__text">
+            <checkbox value="绑定微信 " checked="true" id='6'>
+              绑定微信
+            </checkbox>
+          </view>
+        </view>
+      </checkbox-group>
+
+    <button class='submit-button' form-type='submit' type="primary" disabled="{{hasSubmitted}}">提交</button>
+  </form>
+</view>

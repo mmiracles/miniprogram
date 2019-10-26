@@ -1,0 +1,26 @@
+<!--pages/edit/edit.wxml-->
+<view class="container">
+    <view class="edit-img">
+        <text class="img-text">头像</text>
+        <image class="img" src="/imgs/test.png"> </image>
+        <image class="navigator-arrow" src="/images/right-arrow.png"></image>
+    </view>
+    <view class="edit-item">
+        <navigator url="/pages/editInfo/editInfo?userName={{userName}}" class="item">
+            <text class="id">昵称</text>
+            <text class="id-content ">{{userName}}</text>
+            <image class="navigator-arrow " src="/images/right-arrow.png "></image>
+        </navigator>
+        <view class="item" bindtap="editsex">
+            <text class="id ">性别</text>
+            <text class="id-content ">{{gender}}</text>
+            <image class="navigator-arrow " src="/images/right-arrow.png "></image>
+        </view>
+        <view class="item" bindtap="clickMeedit">
+            <text class="id">个性签名</text>
+            <text class="id-content ">{{signature}}</text>
+            <image class="navigator-arrow " src="/images/right-arrow.png "></image>
+        </view>
+
+    </view>
+</view>

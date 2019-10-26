@@ -1,0 +1,13 @@
+/* pages/editInfo/editInfo.wxss */
+.name-text{
+    border:solid 3rpx black;
+    height:80rpx;
+    margin-top:50rpx;
+    margin-left:30rpx;
+    margin-right:30rpx;
+}
+.edit-button{
+    width:250rpx;
+    margin-top:20rpx;
+    background: green
+}

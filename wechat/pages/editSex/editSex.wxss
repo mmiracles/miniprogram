@@ -1,0 +1,15 @@
+.radio{
+    margin-top:50rpx;
+    margin-left:80rpx;
+    padding-left:100rpx;
+    
+    }
+.male-radio{
+    margin-right: 50rpx;
+}
+.edit-button{
+    width:250rpx;
+    background: green;
+    margin-top: 90rpx;
+
+}

@@ -1,0 +1,101 @@
+/* pages/myCollect/myCollect.wxss */
+.list-page {
+    padding: 10rpx 20rpx;
+}
+
+.title {
+    font-size: 34rpx;
+    font-weight: bold;
+    color: #333;
+}
+
+.article-list {
+    margin: 20rpx 0 0 -20rpx;
+}
+
+.article-item {
+    width: 340rpx;
+    height: 500rpx;
+    /* 阴影 */
+    box-shadow: 2rpx 2rpx 30rpx 0rpx rgba(0, 0, 0, 0.25);
+    /* 边框圆角 */
+    border-radius: 10rpx;
+    /* 溢出隐藏 */
+    overflow: hidden;
+    display: inline-block;
+    margin-left: 20rpx;
+    margin-bottom: 20rpx;
+}
+/* 
+.article-item:nth-of-type(2n-1){
+    margin-right: 10rpx;
+} */
+
+.article-img {
+    width: 350rpx;
+    height: 240rpx;
+}
+
+.article-info-box {
+    padding: 6rpx 14rpx;
+}
+
+.article-title-box {
+    display: flex;
+    /* 方向默认是横向，可删除 *//* flex-direction: row; *//* 里面元素的相对于方向轴的对齐方式 */
+    align-items: center;
+    /* 里面元素的相对于方向轴垂直方向的对齐方式 */
+    justify-content: flex-start;
+}
+
+.article-icon {
+    width: 30rpx;
+    height: 30rpx;
+    /* 对齐方式 */
+}
+
+.article-title {
+    font-size: 26rpx;
+    color: #333;
+    margin-left: 10rpx;
+}
+
+.article-text {
+    font-size: 24rpx;
+    color: #777;
+    margin-top: 10rpx;
+}
+
+.article-bottom {
+    display: flex;
+    margin-top: 10rpx;
+    align-items: center;
+}
+
+.article-bottom image {
+    width: 56rpx;
+    height: 56rpx;
+}
+
+.article-user-box{
+    /* 自动缩小 */
+    /* flex-shrink: 1; */
+    /* 自动撑开 */
+    flex-grow: 1;
+    margin-left: 10rpx;
+}
+
+.article-user {
+    font-size: 24rpx;
+    color: #333;
+}
+
+.article-date {
+    font-size: 24rpx;
+    color: #777;
+}
+.article-bottom text{
+    font-size: 30rpx;
+    color: #333;
+}
+/* pages/myLike/myLike.wxss */

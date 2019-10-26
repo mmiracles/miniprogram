@@ -1,0 +1,63 @@
+<!--index.wxml-->
+<view class="container">
+    <view class="page-body">
+        <view class="page-section">
+            <swiper class="index-swiper" indicator-dots="true" interval="5000" autoplay="true" indicator-color="rgba(255, 255, 255, .2)" indicator-active-color="rgba(255, 255, 255, .7)">
+                <swiper-item>
+                    <image class="swiper-image" src="/imgs/test.png">111</image>
+                </swiper-item>
+                <swiper-item>
+                    <image class="swiper-image" src="/imgs/test.png">222</image>
+                </swiper-item>
+                <swiper-item>
+                    <image class="swiper-image" src="/imgs/test.png">333</image>
+                </swiper-item>
+            </swiper>
+        </view>
+    </view>
+</view>
+<form catchsubmit="formSubmit" catchreset="formReset" id="search-form">
+    <view class="search-pancel">
+        <input value="" id="search-input" name="input" confirm-type="search" class="search-input" placeholder=" 搜索你感兴趣的内容..." bindconfirm="formSubmit"></input>
+        <button class="search-button" form-type="submit" size="mini" plain="true">
+            <icon type="search" color="#959595" size="12" />
+        </button>
+    </view>
+</form>
+<view class="list">
+    <view class="item">
+        <image class="item-img" src="/images/Attractions.png"></image>
+        <view class="item-text">景点</view>
+    </view>
+    <view class="item">
+        <image class="item-img" src="/images/Travels.png"></image>
+        <view class="item-text">攻略</view>
+    </view>
+    <view class="item">
+        <image class="item-img" src="/images/Strategy.png"></image>
+        <view class="item-text">游记</view>
+    </view>
+</view>
+<view class="show">
+    <image class="show-image" src="/images/test.png"></image>
+    <view>
+        <view class="show-text">测试测试测试测试测试测试测试测试输出搜索</view>
+        <view class="show-bottom">
+            <view style="background-image: url(/images/category-o.png)">呵呵呵</view>
+            <view style="background-image: url(/images/views-o.png)">4</view>
+            <view style="background-image: url(/images/comments-o.png)">12</view>
+        </view>
+    </view>
+</view>
+<view class="show">
+    <image class="show-image" src="/images/test.png"></image>
+    <view>
+        <view class="show-text">测试测试测试测试测试测试测试测试输出搜索</view>
+        <view class="show-bottom">
+            <view style="background-image: url(/images/category-o.png)">呵呵呵</view>
+            <view style="background-image: url(/images/views-o.png)">4</view>
+            <view style="background-image: url(/images/comments-o.png)">12</view>
+        </view>
+    </view>
+</view>
+

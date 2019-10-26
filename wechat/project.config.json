@@ -1,0 +1,85 @@
+{
+	"description": "项目配置文件",
+	"packOptions": {
+		"ignore": []
+	},
+	"setting": {
+		"urlCheck": true,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true,
+		"autoAudits": false
+	},
+	"compileType": "miniprogram",
+	"libVersion": "2.7.1",
+	"appid": "touristappid",
+	"projectname": "wechats",
+	"debugOptions": {
+		"hidedInDevtools": []
+	},
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"currentL": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": 6,
+			"list": [
+				{
+					"id": 0,
+					"name": "person",
+					"pathName": "pages/index/index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "edit",
+					"pathName": "pages/edit/edit",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "editInfo",
+					"pathName": "pages/editInfo/editInfo",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "editSex",
+					"pathName": "pages/editSex/editSex",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "editText",
+					"pathName": "pages/editText/editText",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "person",
+					"pathName": "pages/person/person",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "editInfo",
+					"pathName": "pages/editInfo/editInfo"
+				}
+			]
+		}
+	}
+}

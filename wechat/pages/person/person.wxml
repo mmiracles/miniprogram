@@ -1,0 +1,37 @@
+<!--pages/person/person.wxml-->
+<view class="kind-container">
+    <view class="top-info">
+        <image src="/imgs/test.png"></image>
+        <view>TroubleMaker</view>
+    </view>
+    <view class="kind-list">
+        <view class="kind-list-item" bindtap="edit">
+            <image class="kind-list-icon" src="/images/tel-icon.png"></image>
+            <view class="kind-list-text">编辑资料</view>
+            <image class="navigator-arrow" src="/images/right-arrow.png"></image>
+        </view>
+        <view class="kind-list-item" bindtap="clickMyLike">
+            <image class="kind-list-icon" src="/images/tel-icon.png"></image>
+            <view class="kind-list-text">我的点赞</view>
+            <image class="navigator-arrow" src="/images/right-arrow.png"></image>
+        </view>
+        <view class="kind-list-item" bindtap="clickMyCollect">
+            <image class="kind-list-icon" src="/images/chat-icon.png"></image>
+            <view class="kind-list-text">我的收藏</view>
+            <image class="navigator-arrow" src="/images/right-arrow.png"></image>
+
+        </view>
+        <view class="kind-list-item" bindtap="clickMyStrategy">
+            <image class="kind-list-icon" src="/images/feedback-icon.png"></image>
+            <view class="kind-list-text">我的攻略</view>
+            <image class="navigator-arrow" src="/images/right-arrow.png"></image>
+
+        </view>
+        <view class="kind-list-item">
+            <image class="kind-list-icon" src="/images/min-icon.png"></image>
+            <view class="kind-list-text">打卡记录</view>
+            <image class="navigator-arrow" src="/images/right-arrow.png"></image>
+        </view>
+        <button class="exit" type="warn" size="{{warnSize}}" loading="{{loading}}" plain="{{plain}}" disabled="{{disabled}}" bindtap="warn"> 退出登录 </button>
+    </view>
+</view>

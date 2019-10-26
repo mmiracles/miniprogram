@@ -1,0 +1,22 @@
+<view class="list-page">
+    <view class="article-list">
+        <view class="article-item" wx:for="{{likeList}}">
+            <image src="{{item.pageView}}" class="article-img"></image>
+            <view class="article-info-box">
+                <view class="article-title-box">
+                    <image class="article-icon" src="/imgs/icon.png"></image>
+                    <view class="article-title">{{item.title}}</view>
+                </view>
+                <view class="article-text">{{item.content}}</view>
+                <view class="article-bottom">
+                    <image src="{{item.avatar}}"></image>
+                    <view class="article-user-box">
+                        <view class="article-user">{{item.authorName}}</view>
+                        <view class="article-date">{{item.createTime}}</view>
+                    </view>
+                    <text>❤ {{item.greatNum}}</text>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

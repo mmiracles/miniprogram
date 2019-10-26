@@ -1,0 +1,15 @@
+/* pages/editText/editText.wxss */
+.edit-form{
+    border:solid 3rpx black;
+    margin-top:50rpx;
+    margin-left:50rpx;
+    margin-right: 50rpx;
+    margin-bottom:20rpx;
+    align-content: center;
+
+}
+.edit-button{
+    width:200rpx;
+    background-color: green;
+    margin-top:20rpx;
+}

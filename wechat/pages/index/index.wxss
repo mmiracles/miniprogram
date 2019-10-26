@@ -1,0 +1,112 @@
+.swiper-image {
+    width: 100%;
+}
+
+.search-button {
+    border-left: 0 !important;
+    border-top: 1px solid #fff !important;
+    border-right: 1px solid #fff !important;
+    border-bottom: 1px solid #fff !important;
+    background-color: #fff !important;
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+    color: #296fd0 !important;
+    width: 20%;
+    margin: 0 !important;
+    box-shadow: 1px 1px 6px #ecf0f0;
+}
+
+.search-button icon {
+    position: absolute;
+    margin: 28rpx 16rpx;
+}
+
+.search-input {
+    background-color: #fff;
+    padding: 16rpx 0 16rpx 32rpx;
+    min-height: 1rem;
+    font-size: 30rpx;
+    border-bottom-left-radius: 4px;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-right: 0 !important;
+    height: 48rpx;
+    width: 80%;
+    text-align: left;
+    box-shadow: 1px 1px 6px #ecf0f0;
+}
+
+.share-button {
+    border: 1px solid #eee !important;
+    color: #296fd0 !important;
+    left: 10rpx;
+    height: 100rpx;
+    width: 200rpx;
+}
+
+.search-pancel {
+    display: flex;
+    flex-direction: row;
+    background-color: #f5f7f7;
+    padding: 24rpx 24rpx;
+}
+
+.list {
+    display: flex;
+    margin-top: 20rpx;
+    height: 150rpx;
+    justify-content: space-around;
+}
+
+.item-img {
+    width: 100rpx;
+    height: 100rpx;
+    display: block;
+}
+
+.item-text {
+    text-align: center;
+    font-size: 28rpx;
+    margin-top: 6rpx;
+    color: #333;
+}
+
+.show {
+    display: flex;
+    height: 200rpx;
+    padding-top: 20rpx;
+    padding-left: 20rpx;
+}
+
+.show-image {
+    flex-shrink: 0;
+    height: 200rpx;
+    width: 200rpx;
+    margin-right: 20rpx;
+}
+
+/* pages/list/list.wxss */
+
+.show-text {
+    font-size: 26rpx;
+    padding: 4rpx 0;
+    height: 150rpx;
+}
+
+.show-bottom {
+    display: flex;
+    font-size: 26rpx;
+    color: #777;
+    align-items: center;
+}
+
+.show-bottom>view {
+    background-size: 30rpx 30rpx;
+    background-repeat: no-repeat;
+    background-position: left;
+    padding-left: 40rpx;
+    margin-right: 26rpx;
+}

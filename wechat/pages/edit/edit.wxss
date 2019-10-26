@@ -1,0 +1,48 @@
+/* pages/edit/edit.wxss */
+
+.edit-img {
+    height: 160rpx;
+    display: flex;
+    border-bottom: solid 1rpx #e6e6e6;
+    align-items: center;
+}
+
+.img-text {
+    padding-left: 20rpx;
+    font-size: 30rpx;
+    width: 100rpx;
+}
+
+.img {
+    width: 120rpx;
+    height: 120rpx;
+    margin-right: 20rpx;
+    margin-left: 450rpx;
+    border-radius: 10%;
+}
+
+.navigator-arrow {
+    width: 50rpx;
+    height: 50rpx;
+}
+
+.item {
+    height: 120rpx;
+    display: flex;
+    border-bottom: solid 1rpx #e6e6e6;
+    align-items: center;
+}
+
+.id {
+    padding-left: 20rpx;
+    padding-right: 200rpx;
+    font-size: 30rpx;
+    width: 150rpx;
+}
+
+.id-content {
+    font-size: 28rpx;
+    width: 400rpx;
+    text-align: right;
+    color: #777;
+}

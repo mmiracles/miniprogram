@@ -1,0 +1,5 @@
+<!--pages/editText/editText.wxml-->
+<view class="section">
+    <textarea class="edit-form" placeholder="请输入签名" value="{{signature}}" bindinput="signatureInput" />
+    <button  class="edit-button" bindtap="bindFormSubmit">确认修改 </button>
+</view>

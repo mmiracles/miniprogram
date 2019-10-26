@@ -1,0 +1,6 @@
+<!--pages/editInfo/editInfo.wxml-->
+
+<view class="edit-name">
+    <input class="name-text" auto-focus placeholder="请输入昵称" value="{{userName}}" bindinput="userNameInput"/>
+        <button class="edit-button" bindtap="clickSubmit">确认修改 </button>
+</view>

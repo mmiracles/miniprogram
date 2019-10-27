@@ -18,6 +18,7 @@ Page({
         });
     },
     signatureInput(e) {
+        console.log(e)
         this.setData({
             signature: e.detail.value
         })

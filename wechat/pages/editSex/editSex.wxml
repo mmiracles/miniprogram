@@ -4,5 +4,5 @@
             <text>{{item.value}}</text>
         </radio>
     </radio-group>
-    <button class="edit-button" type="primary" size="{{primarySize}}" loading="{{loading}}" plain="{{plain}}" disabled="{{disabled}}" bindchange="radioChange"> 确认修改</button>
+    <button class="edit-button" type="primary" size="{{primarySize}}" loading="{{loading}}" plain="{{plain}}" disabled="{{disabled}}" bindtap="bindFormSubmit"> 确认修改</button>
 </view>

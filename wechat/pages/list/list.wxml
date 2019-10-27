@@ -46,7 +46,6 @@
         </view>
       </block>
     </view>
-
     
     <block wx:if="{{loading}}">
       <view class="error">

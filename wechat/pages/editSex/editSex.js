@@ -6,7 +6,7 @@ Page({
      * 页面的初始数据
      */
     data: {
-        sex: null,
+        gender: null,
         items: [{
                 name: '男',
                 value: '男',
@@ -28,7 +28,7 @@ Page({
     },
     radioChange: function (e) {
         console.log('radio发生change事件，携带value值为：', e.detail.value)
-        this.data.sex=e.detail.value
+        this.data.gender=e.detail.value
         
     },
     /**
@@ -47,6 +47,18 @@ Page({
             items: this.data.items
         })
         
+    },
+    bindFormSubmit: function (e) {
+        const userInfo = getApp().globalData.userInfo;
+        util.ajax.post('/user/changeInfo', {
+            gender: this.data.gender,
+            userId: userInfo.userId,
+        }, (res) => {
+            if (res.code == 0) {
+                userInfo.gender = this.data.gender;
+                wx.navigateBack();
+            }
+        });
     },
 
     /**

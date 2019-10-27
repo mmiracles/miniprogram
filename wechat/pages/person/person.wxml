@@ -21,15 +21,16 @@
             <image class="navigator-arrow" src="/images/right-arrow.png"></image>
 
         </view>
-        <view class="kind-list-item" bindtap="clickMyStrategy">
-            <image class="kind-list-icon" src="/images/feedback-icon.png"></image>
-            <view class="kind-list-text">我的攻略</view>
-            <image class="navigator-arrow" src="/images/right-arrow.png"></image>
-
-        </view>
+     
         <view class="kind-list-item">
             <image class="kind-list-icon" src="/images/min-icon.png"></image>
             <view class="kind-list-text">打卡记录</view>
+            <image class="navigator-arrow" src="/images/right-arrow.png"></image>
+        </view>
+            <!--block wx:if{{登录成功}}-->
+           <view class="kind-list-item" bindtap="clickMyStrategy">
+            <image class="kind-list-icon" src="/images/feedback-icon.png"></image>
+            <!--view class="kind-list-text">{{绑定微信/解绑微信}}</view-->
             <image class="navigator-arrow" src="/images/right-arrow.png"></image>
         </view>
         <button class="exit" type="warn" size="{{warnSize}}" loading="{{loading}}" plain="{{plain}}" disabled="{{disabled}}" bindtap="warn"> 退出登录 </button>

@@ -1,10 +1,13 @@
 // pages/myCollect/myCollect.js
+const util = require('../../utils/util.js');
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
+        collectList:[]
+
 
     },
 
@@ -12,7 +15,13 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
+        util.ajax.get('/myCollect', {
 
+        }, res => {
+            this.setData({
+                collectList: res.data
+            });
+        })
     },
 
     /**

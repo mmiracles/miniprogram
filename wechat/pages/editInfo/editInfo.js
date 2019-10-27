@@ -21,7 +21,6 @@ Page({
             }
         });
     },
-
     userNameInput(e) {
         this.setData({
             userName: e.detail.value,

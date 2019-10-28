@@ -19,8 +19,8 @@
 	      <view class="content">
           <!-- 背景图片 -->
           <view class="background"></view>
-          <image wx:if="{{item.thumbnail}}" src="{{item.thumbnail}}" mode="aspectFill" class="cover"></image>
-          <image wx:else src="{{item.meta.thumbnail}}" mode="aspectFill" class="cover"></image>
+          <image wx:if="{{item.imgUrl}}" src="{{item.imgUrl}}" mode="aspectFill" class="cover"></image>
+          <image wx:else src="{{tempbackground}}" mode="aspectFill" class="cover"></image>
           <view class="title">
             <!-- 文章名 -->
             <text>{{item.title}}</text>    

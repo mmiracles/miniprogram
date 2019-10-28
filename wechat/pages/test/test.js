@@ -14,7 +14,64 @@ Page({
    */
   onLoad: function (options) {
     WxParse.wxParse('article', 'html', this.data.content, this, 5);
+    this.requestRegist()
   },
+
+  requestRegist: function () {
+    console.log("后台注册数据")
+   
+    var that = this
+    let requestUserInfo = {
+      userAccount: "2423423423432",
+      userName: "huehfuierh",
+      password: "123456",
+      gender:"123456",
+    }
+    console.log(requestUserInfo)
+    wx.request({
+      url: "http://47.98.246.49:8080/travel/user/register",
+      data: requestUserInfo,
+      method: 'POST',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      success: function (res) {
+        console.log(res.data)
+        if (res.data.status == 0) {
+          wx.showToast({
+            title: "已提交审核"
+          })
+          setTimeout(function () {
+            //返回上一级页面
+            wx.navigateBack({
+              delta: 1
+            })
+          }, 1500)
+        }
+        else {
+          wx.showToast({
+            title: res.data.mesage,
+            icon: 'none'
+          })
+          //若提交失败,允许再次提交
+          that.setData({
+            hasSubmitted: false
+          })
+        }
+      },
+      fail: function (res) {
+        wx.showToast({
+          title: '错误:' + res.errMsg,
+          icon: 'none'
+        })
+        //若提交失败,允许再次提交
+        that.setData({
+          hasSubmitted: false
+        })
+      }
+    })
+  },
+
 
   /**
    * 生命周期函数--监听页面初次渲染完成

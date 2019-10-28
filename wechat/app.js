@@ -41,6 +41,8 @@ App({
             headImgAddr:123,
             gender: '男',
             signature: 'abcdefg',
-        }
+        },
+      serverAddress:"http://47.98.246.49:8080/travel",
+      userInfoList:[],
     }
 })

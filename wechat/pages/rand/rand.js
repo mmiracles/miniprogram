@@ -13,7 +13,11 @@ Page({
   data: {
     postsList: [],
     loading: "nodisplay",
-    isDidplay:"nodisplay"
+    isDidplay:"nodisplay",
+    pageNum:1,   //当前页面
+    pageSize:5,    //页面大小
+    tempbackground:"/images/SearchImage.png"  //背景图片
+
   },
   /**
    * 生命周期函数--监听页面加载
@@ -50,18 +54,21 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-    var self = this;
-    self.setData({
-      postsList: [],
-      loading: "nodisplay",
-      isDidplay: "nodisplay"
-    });
-    self.fetchRandomPosts();
   },
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
+    console.log("lalal")
+    var self = this;
+    this.data.pageNum++;
+    self.setData({
+      postsList: [],
+      loading: "nodisplay",
+      isDidplay: "nodisplay",
+      pageNum: this.data.pageNum,
+    });
+    self.fetchRandomPosts();
     
   },
   /**
@@ -83,47 +90,42 @@ Page({
    * 获取滑动文章
    */
   fetchRandomPosts: function () {
+    wx.showLoading({
+      title: '正在获取',
+    })
     var self = this;
-    let url = app.globalData.serverAddress+'/essay/'
+    let url = app.globalData.serverAddress +'/essay/all'
+    let requestData={
+      pageNum: this.data.pageNum,
+      pageSize:this.data.pageSize
+    }
     //获取发现的文章列表（几大看点的混合排列）
-    var getPostsRequest = wxRequest.getRequest(url);
+    var getPostsRequest = wxRequest.postRequest(url,requestData);
     getPostsRequest.then(response => {
-      //console.log(response);
+      console.log(response);
       if (response.statusCode == '200' && response.data.length > 0) {
+        wx.hideLoading();
         self.setData({
-          postsList: response.data,
-          postsList: self.data.postsList.concat(response.data.map(function (item) {
-            if (item.thumbnail) {
-              if (item.thumbnail == null || item.thumbnail == '') {
-                item.thumbnail = "../../images/default.png";
-              }
-            } else {
-              if (item.meta.thumbnail == null || item.meta.thumbnail == '') {
-                item.meta.thumbnail = "../../images/default.png";
-              }
-            }
-            return item;
-          })),
-          isDidplay: "display",
-          loading: "nodisplay",
+          // postsList: response.data,
+          postsList: self.data.postsList.concat(response.data)
         });
-      } else {
-        self.setData({
-          loading: "display",
-        });
+      } else if(response.statusCode == '200' && (response.data == null || response.data.length==0)) {
+       wx.showToast({
+         title: '没有更多文章',
+       }) 
       }
     })
     .then(response => {
-     
+      wx.hideLoading()
     })
     .catch(function (response) {
       //console.log(response);
-      self.setData({
-        loading: "display"
-      });
+      wx.showToast({
+        title: response.errMsg,
+      })
     })
     .finally(function () {
-		wx.stopPullDownRefresh;
+      wx.stopPullDownRefresh();
     });
   },
 
@@ -132,8 +134,8 @@ Page({
    */
   redictDetail: function (e) {
     // console.log('查看文章');
-    var id = e.currentTarget.id,
-      url = '../detail/detail?id=' + id;
+    var id = e.currentTarget.essayId,
+      url = '../detail/detail?id=' + essayId+'type='+'文章';
     wx.navigateTo({
       url: url
     })

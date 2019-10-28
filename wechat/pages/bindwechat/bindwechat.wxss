@@ -24,3 +24,9 @@
   width: 50%;
   margin-top: 20px;
 }
+
+/* 解绑按钮 */
+.cancelbind-button{
+  width: 50%;
+  margin-top: 20px;
+}

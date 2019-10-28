@@ -9,15 +9,34 @@
 		"postcss": true,
 		"minified": true,
 		"newFeature": true,
-		"autoAudits": false
+		"coverView": true,
+		"autoAudits": false,
+		"checkInvalidKey": true,
+		"checkSiteMap": true,
+		"uploadWithSourceMap": true,
+		"babelSetting": {
+			"ignore": [],
+			"disablePlugins": [],
+			"outputPath": ""
+		}
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.9.0",
+<<<<<<< HEAD
+	"appid": "wx9994fec45bf33caa",
+	"projectname": "miniprogram-1",
+	"cloudfunctionTemplateRoot": "",
+	"debugOptions": {
+		"hidedInDevtools": []
+	},
+	"scripts": {},
+=======
 	"appid": "wx65d37380e5aa3ab2",
 	"projectname": "wechat",
 	"debugOptions": {
 		"hidedInDevtools": []
 	},
+>>>>>>> d63dea0f98d09a8636d0fa89bcb6a2be3cb4edae
 	"simulatorType": "wechat",
 	"simulatorPluginLibVersion": {},
 	"condition": {
@@ -34,11 +53,14 @@
 			"list": []
 		},
 		"game": {
-			"currentL": -1,
 			"list": []
 		},
 		"miniprogram": {
+<<<<<<< HEAD
+			"current": 8,
+=======
 			"current": 9,
+>>>>>>> d63dea0f98d09a8636d0fa89bcb6a2be3cb4edae
 			"list": [
 				{
 					"id": -1,
@@ -78,6 +100,25 @@
 				},
 				{
 					"id": -1,
+<<<<<<< HEAD
+					"name": "pages/regist/regist",
+					"pathName": "pages/regist/regist",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/test/test",
+					"pathName": "pages/test/test",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/rand/rand",
+					"pathName": "pages/rand/rand",
+					"scene": null
+=======
 					"name": "register",
 					"pathName": "pages/regist/regist",
 					"query": ""
@@ -98,6 +139,7 @@
 					"id": -1,
 					"name": "editInfo",
 					"pathName": "pages/editInfo/editInfo"
+>>>>>>> d63dea0f98d09a8636d0fa89bcb6a2be3cb4edae
 				}
 			]
 		}

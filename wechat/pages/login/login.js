@@ -9,11 +9,11 @@ Page({
     illegalError: [false, false], //输入是否非法
     hasSubmitted: false, //是否已经提交,防止重复提交
     userInfoList: [],
-    inputaccount: false,  //输入账户
-    inputText: null,  //输入的账号
+    inputaccount: false, //输入账户
+    inputText: null, //输入的账号
   },
 
-  cancelIllegalError: function (obj) { //重新输入时，取消表单报错信息
+  cancelIllegalError: function(obj) { //重新输入时，取消表单报错信息
     var id = obj.currentTarget.id
     if (this.data.illegalError[id] == true) {
       var key = "illegalError[" + id + "]"
@@ -28,7 +28,7 @@ Page({
   },
 
   //微信登录
-  wechatLogin: function (event) {
+  wechatLogin: function(event) {
     if (event.detail.userInfo) { //用户已授权
       //防止重复提交
       this.setData({
@@ -43,37 +43,32 @@ Page({
       //使用微信登录
       var that = this
       wx.login({ //获取登录code以便获取用户的OpenId
-        success: function (res) {
+        success: function(res) {
           if (res.code) {
             console.log(res)
             wx.request({
               //微信登录的url
-              url: app.globalData.serverAddress + '/us/api/weChatLogin',
+              url: app.globalData.serverAddress + '/user/loginByWx',
               data: {
-                "code": res.code,
+                wxCode: res.code,
               },
               method: 'POST',
               header: {
-                'content-type': 'application/json',
+                'content-type': 'application/x-www-form-urlencoded'
               },
-              success: function (res) {
+              success: function(res) {
                 console.log(res)
-                if (res.data.status == 0) { //身份验证正确
+                if (res.data.statusCode == 200) { //服务器返回结果集
                   wx.showToast({
                     title: '登录成功',
                   })
                   //登录信息保存本地缓存
-                  var userInfo = res.data.userInfo.user
-                  
-                  userInfo['avatarUrl'] = avatarUrl
-                  // userInfo["access_token"] = res.data.userInfo.jwt.access_token
-                  // userInfo["bindWechat"] = true
-                 
+                  var userInfo = res.data.user
                   app.globalData.userInfo = JSON.parse(JSON.stringify(userInfo))
                   wx.setStorageSync('userInfo', userInfo)
                   console.log(app.globalData.userInfo);
 
-                  setTimeout(function () {
+                  setTimeout(function() {
                     //跳转至主页
                     wx.switchTab({
                       url: '../index/index'
@@ -93,7 +88,7 @@ Page({
                     url: "../bindwechat/bindwechat?hasLoggedin=false&avatarUrl=" + avatarUrl
                   })
                 } else {
-                  if (res.data.message == null || res.data.message.length == 0) {
+                  if (res.data == null || res.data == 0) {
                     wx.showToast({
                       title: "无返回数据",
                       icon: 'none'
@@ -110,7 +105,7 @@ Page({
                   })
                 }
               },
-              fail: function (res) {
+              fail: function(res) {
                 wx.showToast({
                   title: '错误:' + res.errMsg,
                   icon: 'none'
@@ -132,7 +127,7 @@ Page({
             })
           }
         },
-        fail: function (res) {
+        fail: function(res) {
           wx.showToast({
             title: res.errMsg,
             icon: 'none'
@@ -147,7 +142,7 @@ Page({
   },
 
   //登录
-  login: function (obj) {
+  login: function(obj) {
     if (obj.detail.value['username'] == null || obj.detail.value['username'].length == 0) {
       this.setData({
         ["illegalError[0]"]: true
@@ -180,27 +175,28 @@ Page({
     //向后台请求登录
     var that = this
     console.log(obj)
-    let requestData ={
-      userName : obj.detail.value.username,
-      password : obj.detail.value.password,
+    let requestData = {
+      userAccount: obj.detail.value.username,
+      password: obj.detail.value.password,
     }
     wx.request({
       url: app.globalData.serverAddress + '/user/login',
       data: requestData,
       method: 'POST',
       header: {
-        'content-type': 'application/json',
+        'content-type': 'application/x-www-form-urlencoded'
       },
-      success: function (res) {
+      success: function(res) {
         console.log(res)
-        if (res.data.status == 0) { //身份验证正确
+        if (res.data!=null&&res.data.length!=0) { //身份验证正确
           wx.showToast({
             title: '登录成功',
           })
           //登录信息保存本地缓存
-          var userInfo = res.data.user
-          
-          userInfo['avatarUrl'] = '/images/avatar.png'
+          var userInfo = res.data
+          if (userInfo.headImgAddr == null || userInfo.headImgAddr.length==0) {
+            userInfo['headImgAddr'] = '/images/avatar.png'
+          }
           app.globalData.userInfo = JSON.parse(JSON.stringify(userInfo))
           wx.setStorageSync('userInfo', userInfo)
           console.log(app.globalData.userInfo);
@@ -210,14 +206,14 @@ Page({
           for (let user of app.globalData.userInfoList) {
             console.log(user)
             console.log(userInfo)
-            if (user == userInfo.username) {
+            if (user == userInfo.userAccount) {
               hassame = true
               console.log("不加入")
             }
-          }  //若已保存用户账户则不再次保存
+          } //若已保存用户账户则不再次保存
           if (hassame == false) {
             console.log("加入")
-            app.globalData.userInfoList.push(app.globalData.userInfo.username);
+            app.globalData.userInfoList.push(app.globalData.userInfo.userAccount);
             that.setData({
               userInfoList: app.globalData.userInfoList
             })
@@ -227,16 +223,16 @@ Page({
           console.log("缓存用户列表")
           wx.getStorageSync('userInfoList')
 
-          setTimeout(function () {
+          setTimeout(function() {
             //跳转至主页
             wx.switchTab({
               url: '../index/index'
             })
           }, 1500)
         } else {
-          if (res.data.message == null || res.data.message.length == 0) {
+          if (res.data == null || res.data == 0) {
             wx.showToast({
-              title: "无返回数据",
+              title: "账号或密码有误",
               icon: 'none'
             })
           } else {
@@ -251,7 +247,7 @@ Page({
           })
         }
       },
-      fail: function (res) {
+      fail: function(res) {
         wx.showToast({
           title: '错误:' + res.errMsg,
           icon: 'none'
@@ -265,14 +261,14 @@ Page({
   },
 
   //历史用户的显示
-  onputaccount: function () {
+  onputaccount: function() {
     this.setData({
       inputaccount: true
     })
   },
 
   //点击下拉框中的用户
-  selectClick: function (event) {
+  selectClick: function(event) {
     this.setData({
       inputaccount: false
     })
@@ -286,7 +282,7 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function(options) {
 
     this.setData({
       userInfoList: app.globalData.userInfoList
@@ -297,49 +293,49 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
+  onReady: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
+  onHide: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
+  onUnload: function() {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
     wx.stopPullDownRefresh()
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
+  onReachBottom: function() {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
 
   }
 })

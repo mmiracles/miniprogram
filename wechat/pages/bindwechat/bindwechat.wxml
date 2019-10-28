@@ -1,31 +1,62 @@
 <!--pages/bindwechat/bindwechat.wxml-->
-<form bindsubmit='bindWechat'>
-  <view class="weui-cells__title" style="color:{{illegalError[0] ? 'red' : '#999'}};">账号</view>
-  <view class="weui-cells weui-cells_after-title">
-    <view class="weui-cell weui-cell_input">
-      <view class="weui-cell__bd">
-        <input class="weui-input" name="username" id="0" placeholder="请输入账号" bindinput="cancelIllegalError" />
-      </view>
-      <view wx:if="{{illegalError[0]}}" class="weui-cell__ft">
-        <icon type="warn" size="23" color="#E64340"></icon>
-      </view>
-    </view>
-  </view>
-  <view class="weui-cells__title" style="color:{{illegalError[1] ? 'red' : '#999'}};">密码</view>
-  <view class="weui-cells weui-cells_after-title">
-    <view class="weui-cell weui-cell_input">
-      <view class="weui-cell__bd">
-        <input class="weui-input" name="password" id="1" placeholder="请输入密码" password="true" bindinput="cancelIllegalError" />
-      </view>
-      <view wx:if="{{illegalError[1]}}" class="weui-cell__ft">
-        <icon type="warn" size="23" color="#E64340"></icon>
+<!-- 绑定微信 -->
+<!-- <view wx:if="{{isbind}}"> -->
+<!-- <view wx:if="{{isbind}}"> -->
+  <form bindsubmit='bindWechat'>
+    <view class="weui-cells__title" style="color:{{illegalError[0] ? 'red' : '#999'}};">账号</view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__bd">
+          <input class="weui-input" name="username" id="0" placeholder="请输入账号" bindinput="cancelIllegalError" />
+        </view>
+        <view wx:if="{{illegalError[0]}}" class="weui-cell__ft">
+          <icon type="warn" size="23" color="#E64340"></icon>
+        </view>
       </view>
     </view>
-  </view>
-  <!-- <button class='regist-button' style='width: 60px;background-color:white;' hover-class='registBtn-hover' open-type='getUserInfo' bindgetuserinfo='getWechatInfo'>微信登录</button> -->
-  <view class="text-button">
-    <!-- <navigator class='regist-button' hover-class='registBtn-hover'>忘记密码</navigator> -->
-    <navigator class='regist-button' hover-class='registBtn-hover' url='../regist/regist'>没有账号？注册</navigator>
-  </view>
-  <button class='bind-button' form-type='submit' type='primary' disabled="{{hasSubmitted}}">绑定</button>
-</form>
+    <view class="weui-cells__title" style="color:{{illegalError[1] ? 'red' : '#999'}};">密码</view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__bd">
+          <input class="weui-input" name="password" id="1" placeholder="请输入密码" password="true" bindinput="cancelIllegalError" />
+        </view>
+        <view wx:if="{{illegalError[1]}}" class="weui-cell__ft">
+          <icon type="warn" size="23" color="#E64340"></icon>
+        </view>
+      </view>
+    </view>
+    <!-- <button class='regist-button' style='width: 60px;background-color:white;' hover-class='registBtn-hover' open-type='getUserInfo' bindgetuserinfo='getWechatInfo'>微信登录</button> -->
+    <view class="text-button">
+      <!-- <navigator class='regist-button' hover-class='registBtn-hover'>忘记密码</navigator> -->
+      <navigator class='regist-button' hover-class='registBtn-hover' url='../regist/regist'>没有账号？注册</navigator>
+    </view>
+    <button class='bind-button' form-type='submit' type='primary' disabled="{{hasSubmitted}}">绑定</button>
+  </form>
+<!-- </view> -->
+
+<!-- 解绑微信 -->
+<!-- <view wx:else>
+
+  <form bindsubmit="cancelBindWechat">
+    <view class="weui-cells__title">账号</view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__bd">
+          <input class="weui-input" style="color: #b2b2b2;" name="username" value="{{userInfo.username}}" disabled="true" />
+        </view>
+      </view>
+    </view>
+    <view class="weui-cells__title" style="color:{{illegalError ? 'red' : '#999'}};">输入密码</view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__bd">
+          <input class="weui-input" name="password" placeholder="填写本账号密码" password="true" bindinput="cancelIllegalError" />
+        </view>
+        <view wx:if="{{illegalError}}" class="weui-cell__ft">
+          <icon type="warn" size="23" color="#E64340"></icon>
+        </view>
+      </view>
+    </view>
+    <button class='cancelbind-button' form-type='submit' type='primary' disabled="{{hasSubmitted}}">解除绑定</button>
+  </form>
+</view> -->

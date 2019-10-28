@@ -39,6 +39,8 @@ App({
             userName: 'TroubleMaker',
             signature: 'abcdefg',
             gender: '男'
-        }
+        },
+      serverAddress:"http://47.98.246.49:8080/travel",
+      userInfoList:[],
     }
 })

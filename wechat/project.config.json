@@ -4,20 +4,33 @@
 		"ignore": []
 	},
 	"setting": {
-		"urlCheck": true,
+		"urlCheck": false,
 		"es6": true,
 		"postcss": true,
 		"minified": true,
 		"newFeature": true,
-		"autoAudits": false
+		"coverView": true,
+		"autoAudits": false,
+		"checkInvalidKey": true,
+		"checkSiteMap": true,
+		"uploadWithSourceMap": true,
+		"babelSetting": {
+			"ignore": [],
+			"disablePlugins": [],
+			"outputPath": ""
+		}
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.9.0",
-	"appid": "touristappid",
-	"projectname": "mini",
+	"appid": "wx9994fec45bf33caa",
+	"projectname": "miniprogram-1",
+	"cloudfunctionTemplateRoot": "",
 	"debugOptions": {
 		"hidedInDevtools": []
 	},
+	"scripts": {},
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
 	"condition": {
 		"search": {
 			"current": -1,
@@ -32,11 +45,10 @@
 			"list": []
 		},
 		"game": {
-			"currentL": -1,
 			"list": []
 		},
 		"miniprogram": {
-			"current": 5,
+			"current": 8,
 			"list": [
 				{
 					"id": -1,
@@ -71,7 +83,28 @@
 				{
 					"id": -1,
 					"name": "bindwechat",
-					"pathName": "pages/bindwechat/bindwechat"
+					"pathName": "pages/bindwechat/bindwechat",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "pages/regist/regist",
+					"pathName": "pages/regist/regist",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/test/test",
+					"pathName": "pages/test/test",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/rand/rand",
+					"pathName": "pages/rand/rand",
+					"scene": null
 				}
 			]
 		}

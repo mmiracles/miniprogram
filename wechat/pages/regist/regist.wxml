@@ -28,7 +28,7 @@
           <input class="weui-input" name="nickname" id="1" placeholder='请输入昵称' bindinput="cancelIllegalError" />
         </view>
         <view class="weui-cell__ft">
-          <icon wx:if="{{illegalError[0]}}" type="warn" size="23" color="#E64340"></icon>
+          <icon wx:if="{{illegalError[1]}}" type="warn" size="23" color="#E64340"></icon>
         </view>
       </view>
 
@@ -57,7 +57,7 @@
           <input class="weui-input" name="password" id="3" password='true' placeholder='请输入密码' bindinput="cancelIllegalError" />
         </view>
         <view class="weui-cell__ft ">
-          <icon wx:if="{{illegalError[0]}}" type="warn" size="23" color="#E64340"></icon>
+          <icon wx:if="{{illegalError[3]}}" type="warn" size="23" color="#E64340"></icon>
         </view>
       </view>
 
@@ -72,7 +72,7 @@
           <input class="weui-input" name="confirmPassword" id="4" password='true' placeholder='重新输入密码' bindinput="cancelIllegalError" />
         </view>
         <view class="weui-cell__ft ">
-          <icon wx:if="{{illegalError[0]}}" type="warn" size="23" color="#E64340"></icon>
+          <icon wx:if="{{illegalError[4]}}" type="warn" size="23" color="#E64340"></icon>
         </view>
       </view>
 

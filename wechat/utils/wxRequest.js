@@ -51,7 +51,7 @@ function postRequest(url, data) {
     method: 'POST',
     data: data,
     header: {
-      "content-type": "application/json"
+      'content-type': 'application/x-www-form-urlencoded'
     },
   })
 }

@@ -36,9 +36,11 @@ App({
     globalData: {
         userInfo: {
             userId: 1,
-            userName: 'TroubleMaker',
+            userName: 'TubleMaker',
+            password:123456,
+            headImgAddr:123,
+            gender: '男',
             signature: 'abcdefg',
-            gender: '男'
         },
       serverAddress:"http://47.98.246.49:8080/travel",
       userInfoList:[],

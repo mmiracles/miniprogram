@@ -13,3 +13,6 @@
     background-color: green;
     margin-top:20rpx;
 }
+.weui-textarea-counter{
+    margin-right:100rpx;
+}

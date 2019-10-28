@@ -5,8 +5,7 @@ Page({
      * 页面的初始数据
      */
     data: {
-      
-
+      userName:null
 
     },
     
@@ -15,7 +14,11 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function(options) {
-
+        const userInfo = getApp().globalData.userInfo;
+        this.data.userName =userInfo.userName
+        this.setData({
+            userName: this.data.userName
+        });
     },
 
     /**

@@ -5,7 +5,8 @@ Page({
      * 页面的初始数据
      */
     data: {
-        signature: ''
+        signature: '',
+        textnum:0
     },
 
     /**
@@ -18,10 +19,16 @@ Page({
         });
     },
     signatureInput(e) {
-        console.log(e)
         this.setData({
             signature: e.detail.value
         })
+            var count = e.detail.cursor
+            //是否超出限制
+            if (count <= 50) {
+                this.setData({
+                    textnum: count
+                })
+            }
     },
     bindFormSubmit: function(e) {
         const userInfo = getApp().globalData.userInfo;

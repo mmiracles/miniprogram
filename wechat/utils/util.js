@@ -1,5 +1,5 @@
 const config = {
-    host: 'http://127.0.0.1'
+    host: 'http://47.98.246.49'
 };
 
 const ajax = {
@@ -9,7 +9,6 @@ const ajax = {
             data: data,
             method: 'GET',
             success: function(result) {
-                console.log('微信成功回调啦', result)
                 successFunc(result.data);
             },
             fail: function() {

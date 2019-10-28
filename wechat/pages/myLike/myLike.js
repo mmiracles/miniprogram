@@ -12,8 +12,10 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function(options) {
-        util.ajax.get('/myGreat', {
-
+        util.ajax.get('/travel/essay/myGreat', {
+            "pageNum":3,
+            "pageSize":5,
+            "userId":1
         }, res => {
             this.setData({
                 likeList: res.data

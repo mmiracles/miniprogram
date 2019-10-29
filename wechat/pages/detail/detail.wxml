@@ -1,45 +1,45 @@
 <!--pages/detail/detail.wxml-->
 <import src="../../wxParse/wxParse.wxml" />
 <import src="../../templates/header.wxml" />
-<view class="container">
-  <!--内容详情-->
+<view wx:if="{{type=='文章'}}" class="container">
+  <!--文章内容详情-->
   <view class="content-article-detail {{display}}">
+    <!-- 文章标题名 -->
     <view class="entry-title">
-      <!-- 文章标题名 -->
       <text>{{detail.title}}</text>
     </view>
     <view class="entry-meta">
       <!-- 发布时间 -->
       <image src="../../images/calendar-o.png"></image>
       <text class="entry-icon-text">{{detailDate}}</text>
-      <block wx:if="{{detail.category !=null}}">
+      <block>
         <!-- 分类 -->
         <image src="../../images/category-o.png"></image>
-        <text class="entry-icon-text">{{detail.classsify}}</text>
+        <text class="entry-icon-text">{{detail.classify}}</text>
         <!-- 标签 -->
         <image src="../../images/comments-o.png"></image>
         <text class="entry-icon-text">{{detail.tag}}</text>
         <!-- 浏览数 -->
         <image src="../../images/views-o.png"></image>
-        <text class="entry-icon-text">{{detail.pageView}}</text>
+        <text class="entry-icon-text">浏览：{{detail.pageView}}</text>
         <!-- 点赞数量 -->
         <image src="../../images/heart-o.png"></image>
-        <text class="entry-icon-text">{{thumbsCount}}</text>
+        <text class="entry-icon-text">点赞：{{thumbsCount}}</text>
       </block>
     </view>
     <view class="entry-summary">
       <template is="wxParse" data="{{wxParseData:article.nodes}}" />
     </view>
   </view>
+
   <view class="thumbsUp">
     <view class="Showthumbs">
       <button class="thumbs-button" size="mini" catchtap="thumbsUpClick">
         <image src="../../images/zan.png" class="thumbsImg"></image>点赞</button>
-      <button class="collect-button" size="mini" catchtap="thumbsUpClick">
-        <image src="../../images/views-o.png" class="thumbsImg"></image>收藏</button>
+      <button class="collect-button" size="mini" catchtap="collectClick">
+        <image src="../../images/collect.png" class="thumbsImg"></image>收藏</button>
     </view>
   </view>
-
 
   <!-- 返回主页面 转发 -->
   <view class="{{display}}">
@@ -62,9 +62,35 @@
       </form>
     </view>
   </view>
-
 </view>
 
+<!--景点内容详情-->
+<view wx:if="{{type=='景点'}}" class="content-article-detail {{display}}">
+  <!-- 文章标题名 -->
+  <view class="entry-title" style="text-align:center;">
+    <text>{{detail.viewName}}</text>
+  </view>
+  <view class="entry-meta" style="text-align:center;">
+    <block>
+      <!-- 分类 -->
+      <image src="../../images/category-o.png"></image>
+      <text class="entry-icon-text">{{detail.classify}}</text>
+    </block>
+    <!-- 发布时间 -->
+    <image src="../../images/calendar-o.png"></image>
+    <text class="entry-icon-text">{{detail.location}}</text>
+  </view>
+  <view class="entry-summary">
+    <template is="wxParse" data="{{wxParseData:article.nodes}}" />
+  </view>
+ <view class="thumbsUp">
+    <view class="Showthumbs">
+      <button class="daka-button" size="mini" catchtap="dakaClick">
+        <image src="../../images/daka.png" class="thumbsImg" style="width:30rpx;height:30rpx;"></image>打卡</button>
+    </view>
+  </view>
+
+</view>
 
 <view class="canvas-box">
   <canvas style="width: 600px;height: 970px;" canvas-id="prefix" />

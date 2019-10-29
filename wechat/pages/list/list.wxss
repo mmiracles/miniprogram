@@ -44,7 +44,7 @@
   color: #fff;
 }
 .topic-content-title-line{
-  width: 185rpx;
+  width: 260rpx;
   padding: 16rpx 0rpx;
   overflow: hidden;
   text-overflow: ellipsis;

@@ -16,8 +16,7 @@
 }
 .content-article-detail {
   margin-top: 40rpx;
-  margin-bottom: 48rpx;
-  padding-bottom: 48rpx;
+  margin-bottom: 40rpx;
 }
 .entry-title {
   outline: none;
@@ -371,12 +370,13 @@
 }
 .Showthumbs {
   margin: 24rpx 0;
+  padding-bottom: 80rpx;
   text-align: center;
 }
 .thumbs-button {
   
   color: #eee;
-  min-width: 120rpx;
+  min-width: 150rpx;
   margin-top: 30rpx;
   font-weight: normal;
   border-radius: 300rpx;
@@ -389,9 +389,10 @@
   border:none;
 }
 .thumbsImg {
-  width:22rpx;
-  height:22rpx;
+  width:26rpx;
+  height:26rpx;
   margin-right:10rpx;
+  color: white;
 }
 .prefix {
   width:30%;
@@ -405,13 +406,25 @@
 
 .collect-button{
   color: #eee;
-  min-width: 120rpx;
+  min-width: 150rpx;
   margin-top: 30rpx;
   margin-left:20rpx;
   font-weight: normal;
   border-radius: 300rpx;
   font-size: 0.785714286rem;
   background-color: #0099ffde;
+  background-repeat: repeat-x;
+}
+
+.daka-button {
+  
+  color: #eee;
+  min-width: 150rpx;
+  margin-top: 30rpx;
+  font-weight: normal;
+  border-radius: 300rpx;
+  font-size: 0.785714286rem;
+  background-color:#4d4debd8;
   background-repeat: repeat-x;
 }
 

@@ -12,44 +12,79 @@ Page({
    */
   data: {
     title: '文章列表',
-    postsList: {},    //存放文章的列表
-    categoriesList: {},   //分类名
-    page: 1,   //当前索引页
-    pagesize:5,  //一次请求5条数据
+    postsList: [], //存放文章的列表
+    categoriesList: {}, //分类名
+    page: 1, //当前索引页
+    pagesize: 5, //一次请求5条数据
     search: '',
     per_page: 10,
     isKeyword: "",
     categories: 0,
-    categoriesName: '',
-    categoriesImage: "",
     loading: false,
-    isCategory: false,    //是分类
-    isSearch: false,
     isLastPage: false,
     isMore: false,
-    isDisplay: "nodisplay"
+    isDisplay: "nodisplay",
+
+    isCategory: false, //是景点、游记与攻略
+    isSearch: false,
+    categoriesName: '', //分类名
+    categoriesImage: "", //分类背景图
+    categoriesDescription: "", //分类的描述
+    type: "搜索", //景点、攻略、游记、搜索
+    pageNum: 1, //当前索引页
+    pageSize: 4, //一次请求5条数据
+    keyword: "武汉", //搜索的关键字
   },
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function(options) {
     var self = this;
-    //console.log(options);
-
+    console.log(options);
+    this.setData({
+      type: options.type //景点、游记、攻略、搜索
+    })
     //是通过分类所得到的列表
-    if (options.id && options.id != 0) {
+    if (this.data.type == "景点") {
       self.setData({
-        categories: options.id,
-        isCategory: true
+        categoriesName: "景点 scenery",
+        isCategory: true,
+        categoriesImage: "/images/scenery.jpg", //分类背景图
+        categoriesDescription: "在武汉寻找 捕捉文艺的气息", //分类的描述
       });
-      self.fetchCategoriesData(options.id);
+      self.fetchCategoriesData();
+    } else if (this.data.type == "游记") {
+      self.setData({
+        categoriesName: "游记 travel",
+        isCategory: true,
+        categoriesImage: "/images/travel.jpg", //分类背景图
+        categoriesDescription: "来一场 说走就走的旅行吧", //分类的描述
+      });
+      self.fetchCategoriesData();
+    } else if (this.data.type == "攻略") {
+      self.setData({
+        categoriesName: "攻略 strategy",
+        isCategory: true,
+        categoriesImage: "/images/strategy.jpg", //分类背景图
+        categoriesDescription: "探索游玩攻略 放心肆意的去看世界", //分类的描述
+      });
+      self.fetchCategoriesData();
+    } else {
+      self.setData({
+        categoriesName: "搜索 ",
+        isCategory: true,
+        categoriesImage: "/images/search.jpg", //分类背景图
+        categoriesDescription: "搜索沿途风景 踏上属于你的旅行", //分类的描述
+        keyword: options.searchWords //搜索的关键字
+      });
+      self.fetchSearchData()
     }
 
     //是通过搜索的到的列表
     if (options.search && options.search != '') {
       wx.setNavigationBarTitle({
         title: "搜索：【" + options.search + "】所有文章",
-        success: function (res) {
+        success: function(res) {
           // success
         }
       });
@@ -58,63 +93,58 @@ Page({
         isSearch: true,
         isKeyword: options.search
       })
-      self.fetchPostsData(self.data);   //获取搜索列表
+      self.fetchPostsData(self.data); //获取搜索列表
     }
+
+
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
-  
+  onReady: function() {
+
   },
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
-  
+  onShow: function() {
+
   },
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
-  
+  onHide: function() {
+
   },
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
-  
+  onUnload: function() {
+
   },
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
-  
+  onPullDownRefresh: function() {
+
   },
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
+  onReachBottom: function() {
     var self = this;
-    if (!self.data.isLastPage) {
-      self.setData({
-        page: self.data.page + 1
-      });
-      console.log('当前页' + self.data.page);
-      this.fetchPostsData(self.data);
+    console.log('当前页' + self.data.page);
+    if (this.data.type == "搜索") {
+      this.fetchSearchData();
+    } else {
+      this.fetchCategoriesData();
     }
-    else {
-      wx.showToast({
-        title: '没有更多内容',
-        mask: false,
-        duration: 1000
-      });
-    }
+
   },
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
     var title = '分享"' + config.getAppSite + '"';
     var path = "";
     var imageUrl = "";
@@ -131,10 +161,10 @@ Page({
       title: title,
       path: path,
       imageUrl: imageUrl,
-      success: function (res) {
+      success: function(res) {
         // 转发成功
       },
-      fail: function (res) {
+      fail: function(res) {
         // 转发失败
       }
     }
@@ -142,150 +172,153 @@ Page({
   /**
    * 生命周期函数-重载数据
    */
-  reLoad: function (e) {
-    var self = this;
-    if (self.data.categories && self.data.categories != 0) {
-      self.setData({
-        loading:false,
-        isCategory: true,
-        isDisplay: "nodisplay"
-      });
-      self.fetchCategoriesData(self.data.categories);
-    }
-    if (self.data.search && self.data.search != '') {
-      self.setData({
-        loading: false,
-        isSearch: true,
-        isDisplay: "nodisplay",
-        isKeyword: self.data.search
-      })
-    }
-    self.fetchPostsData(self.data);
+  reLoad: function(e) {
+    // var self = this;
+    // if (self.data.categories && self.data.categories != 0) {
+    //   self.setData({
+    //     loading: false,
+    //     isCategory: true,
+    //     isDisplay: "nodisplay"
+    //   });
+    //   self.fetchCategoriesData(self.data.categories);
+    // }
+    // if (self.data.search && self.data.search != '') {
+    //   self.setData({
+    //     loading: false,
+    //     isSearch: true,
+    //     isDisplay: "nodisplay",
+    //     isKeyword: self.data.search
+    //   })
+    // }
+    // self.fetchPostsData(self.data);
   },
 
   /**
    * 获取分类列表,id传过来的列表类型
    */
-  fetchCategoriesData: function (id) {
+  fetchCategoriesData: function(id) {
+    wx.showLoading({
+      title: '正在加载',
+    })
     var self = this;
     self.setData({
       categoriesList: []
     });
-    let url = app.globalData.serverAddress + ""  //获取分类列表的url
-    let requestdata ={
-      pageindex:this.page,   //当前索引页
-      pagesize:this.pagesize,   //页面大小
-      id:id,   //分类的id
+    let url
+    let requsetData
+    if (this.data.type == "景点") {
+      url = app.globalData.serverAddress + "/view/all"
+      requsetData = {
+        pageNum: this.data.pageNum,
+        pageSize: this.data.pageSize,
+      }
+    } else if (this.data.type == "攻略" || this.data.type == "游记") {
+      url = app.globalData.serverAddress + "/essay/classify"
+      requsetData = {
+        pageNum: this.data.pageNum,
+        pageSize: this.data.pageSize,
+        classify: this.data.type,
+      }
     }
-    var getCategoryRequest = wxRequest.getRequest(url, requestdata);   
+    var getCategoryRequest = wxRequest.postRequest(url, requsetData);
     getCategoryRequest.then(response => {
-      console.log(response)
+        console.log(response)
+        if (response.data.length != 0 && 　response.data != null) {
+          this.data.pageNum++
+            self.setData({
+              // categoriesList: response.data,  
+              pageNum: this.data.pageNum,
+              postsList: self.data.postsList.concat(response.data)
+            });
 
-      self.setData({
-        categoriesList: response.data,   //获取的list列表数据
-        categoriesImage: cover,   //list列表的封面
-        categoriesName: response.data.name,   //列表名
-        postsList:self.data.postsList.concat(response.data.postsList)   //获取的列表数据  
-      });
-
-      wx.setNavigationBarTitle({
-        title: response.data.name,
-        success: function (res) {
-          // success
+        } else if (response.statusCode == 200) {
+          wx.showToast({
+            title: '没有更多内容',
+            icon: 'none',
+          })
         }
+      })
+      .then(response => {
+        wx.hideLoading()
+      })
+      .catch(function(response) {
+        //console.log(response);
+        wx.showToast({
+          title: response.errMsg,
+        })
+      })
+      .finally(function() {
+        // wx.stopPullDownRefresh();
       });
-    })
+
   },
 
   /**
-   * 获取文章列表
+   * 获取搜索列表,id传过来的列表类型
    */
-  fetchPostsData: function (data) {
-    var self = this;
-    if (!data) data = {};
-    if (!data.page) data.page = 1;
-    if (!data.per_page) data.per_page = 10;
-    if (!data.categories) data.categories = 0;
-    if (!data.search) data.search = '';
-    if (data.page === 1) {
-      self.setData({
-        postsList: []
-      });
-    };
+  fetchSearchData: function() {
     wx.showLoading({
       title: '正在加载',
-      mask: true
-    });
-    var getPostsRequest = wxRequest.getRequest(Api.getPosts(data));
-    getPostsRequest.then(response => {
-      if (response.statusCode === 200) {
+    })
+    var self = this;
+    let url
+    let requsetData
+
+    url = app.globalData.serverAddress + "/essay/search"
+    requsetData = {
+      pageNum: this.data.pageNum,
+      pageSize: this.data.pageSize,
+      keyword: this.data.keyword,
+    }
+    var getCategoryRequest = wxRequest.postRequest(url, requsetData);
+    getCategoryRequest.then(response => {
         console.log(response)
-        if (response.data.length < 5) {
-          self.setData({
-            isMore: true,
-            isLastPage: true
-          });
-        };
-        self.setData({
-          isDisplay: "display",
-          postsList: self.data.postsList.concat(response.data.map(function (item) {
-            var strdate = item.date
-            if (item.category != null) {
-              if (item.cover == null || item.cover == '') {
-                item.cover = "../../images/cover.png";   
-              }
-            } else {
-              item.cover = "";
-            }
-            if (item.thumbnail == null || item.thumbnail == '') {
-              item.thumbnail = '../../images/default.png';
-            }
-            item.date = util.cutstr(strdate, 10, 1);
-            item.title.rendered = util.ellipsisHTML(item.title.rendered);
-            return item;
-          })),
-        });
-      } else {
-        if (response.data.code == "rest_post_invalid_page_number") {
-          self.setData({
-            isLastPage: true
-          });
-        } else {
+        if (response.data.length != 0 && response.data != null) {
+          this.data.pageNum++
+            self.setData({
+              // categoriesList: response.data,  
+              pageNum: this.data.pageNum,
+              postsList: self.data.postsList.concat(response.data)
+            });
+        } else if (response.statusCode == 200) {
           wx.showToast({
-            title: response.data.message,
-            duration: 1500
+            title: '没有更多内容',
+            icon: 'none',
           })
         }
-      }
-    })
-    .catch(function () {
-      if (data.page == 1) {
-        self.setData({
-          loading: true,
-          isMore: false,
-          isDisplay: "nodisplay"
-        });
-      } else {
-        wx.showModal({
-          title: '加载失败',
-          content: '加载数据失败, 请重试.',
-          showCancel: false,
-        });
-        self.setData({
-          page: data.page - 1
-        });
-      }
-    })
-    .finally(function () {
-      wx.hideLoading();
-    })
+      })
+      .then(response => {
+        wx.hideLoading()
+      })
+      .catch(function(response) {
+        //console.log(response);
+        wx.showToast({
+          title: response.errMsg,
+        })
+      })
+      .finally(function() {
+        // wx.stopPullDownRefresh();
+      });
   },
+
+
   /**
    * 查看文章详情
    */
-  redictDetail: function (e) {
+  redictDetail: function(e) {
     var id = e.currentTarget.id,
-    url = '../detail/detail?id=' + id;
+      url = '../detail/detail?id=' + id + '&type=文章';
+    wx.navigateTo({
+      url: url
+    })
+  },
+
+  /**
+   * 查看景点详情
+   */
+  redictViewDetail: function(e) {
+    var id = e.currentTarget.id,
+      url = '../detail/detail?id=' + id + '&type=景点';
     wx.navigateTo({
       url: url
     })

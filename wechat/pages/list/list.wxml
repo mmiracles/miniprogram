@@ -7,38 +7,41 @@
         <!-- 分类的名字 -->
         <image src="{{categoriesImage}}" class="cover"></image>
         <view class="topic-content-title">
-          <text>{{categoriesList.name}}</text>
+          <text>{{categoriesName}}：{{keyword}}</text>
         </view>
         <!-- 分类的描述 -->
         <view class="topic-content-title-line"></view>
         <view class="topic-content-brief">
-          <text>{{categoriesList.description}}</text>
+          <text>{{categoriesDescription}}</text>
         </view>
+        <!-- <view wx:if="{{type=='搜索'}}" class="topic-content-brief">
+          <text> 全文搜索关键字：{{keyword}} </text>
+        </view> -->
       </view>
     </view>
   </block>
 
   <!-- 查询列表的显示 -->
-  <block wx:if="{{isSearch}}">
+  <!-- <block wx:if="{{type=='搜索'}}">
     <view class="topic-common-list">
       <view class="topic-list-item">
         <view>
           <image src="../../images/SearchImage.png" class="cover"></image>
         </view>
         <view class="topic-content-title">
-          <text class="searchKey">{{isKeyword}}</text>
+          <text class="searchKey">{{keyword}}</text>
         </view>
         <view class="topic-content-title-line"></view>
         <view class="topic-content-brief">
-          <text> 全文搜索关键字：{{isKeyword}} </text>
+          <text> 全文搜索关键字：{{keyword}} </text>
         </view>
       </view>
     </view>
-  </block>
+  </block> -->
 
   <!-- list列表中的文章显示  将传过来的list放入postList变量中 -->
   <view class="container">
-    <view class="{{isDisplay}}">
+    <view wx:if="{{type=='游记'||type=='攻略'||type=='搜索'}}">
       <template is="List" data="{{postsList}}" />
       <block wx:if="{{isMore}}">
         <view class="load-more">
@@ -46,7 +49,15 @@
         </view>
       </block>
     </view>
-    
+    <view wx:elif="{{type=='景点'}}">
+      <template is="View" data="{{postsList}}" />
+      <block wx:if="{{isMore}}">
+        <view class="load-more">
+          <view class="no-more" hidden="{{!isLastPage}}">--- 无更多文章 ---</view>
+        </view>
+      </block>
+    </view>
+
     <block wx:if="{{loading}}">
       <view class="error">
         <image src="../../images/error.png" class="errImage"></image>

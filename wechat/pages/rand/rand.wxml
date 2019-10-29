@@ -15,7 +15,7 @@
   <!-- 加载图文列表 -->
   <view class="random">
     <block wx:key="id" wx:for="{{postsList}}">
-      <view class="list-item" index="{{index}}" id="{{item.id}}" bindtap="redictDetail">
+      <view class="list-item" index="{{index}}" id="{{item.essayId}}" bindtap="redictDetail">
 	      <view class="content">
           <!-- 背景图片 -->
           <view class="background"></view>

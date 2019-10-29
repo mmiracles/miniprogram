@@ -36,7 +36,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    wx.setStorageSync('openLinkCount', 0);
+    // wx.setStorageSync('openLinkCount', 0);
   },
   /**
    * 生命周期函数--监听页面隐藏
@@ -61,13 +61,6 @@ Page({
   onReachBottom: function () {
     console.log("lalal")
     var self = this;
-    this.data.pageNum++;
-    self.setData({
-      postsList: [],
-      loading: "nodisplay",
-      isDidplay: "nodisplay",
-      pageNum: this.data.pageNum,
-    });
     self.fetchRandomPosts();
     
   },
@@ -105,6 +98,7 @@ Page({
       console.log(response);
       if (response.statusCode == '200' && response.data.length > 0) {
         wx.hideLoading();
+        self.data.pageNum++
         self.setData({
           // postsList: response.data,
           postsList: self.data.postsList.concat(response.data)
@@ -112,6 +106,7 @@ Page({
       } else if(response.statusCode == '200' && (response.data == null || response.data.length==0)) {
        wx.showToast({
          title: '没有更多文章',
+         icon:'none'
        }) 
       }
     })
@@ -133,9 +128,9 @@ Page({
    * 跳转至查看文章详情
    */
   redictDetail: function (e) {
-    // console.log('查看文章');
-    var id = e.currentTarget.essayId,
-      url = '../detail/detail?id=' + essayId+'type='+'文章';
+    console.log(e);
+    var id = e.currentTarget.id,
+      url = '../detail/detail?id='+id+'&type='+'文章';
     wx.navigateTo({
       url: url
     })

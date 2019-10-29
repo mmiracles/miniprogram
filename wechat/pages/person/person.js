@@ -5,22 +5,27 @@ Page({
      * 页面的初始数据
      */
     data: {
-      userName:null
+        userName: null
 
     },
-    
+
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function(options) {
-        const userInfo = getApp().globalData.userInfo;
-        this.data.userName =userInfo.userName
+        const userInfo = wx.getStorageSync('userInfo');
+        this.data.userName = userInfo.userName
         this.setData({
             userName: this.data.userName
         });
     },
-
+    clickExit() {
+        wx.reLaunch({
+            url: '/pages/login/login',
+        });
+        wx.setStorageSync('userInfo', {});
+    },
     /**
      * 生命周期函数--监听页面初次渲染完成
      */
@@ -41,12 +46,18 @@ Page({
     onHide: function() {
 
     },
+    clickMyfootprint(){
+        wx.navigateTo({
+            url: '/pages/myFootPrint/myFootPrint',
+        })
+
+    },
     clickMyLike() {
         wx.navigateTo({
             url: '/pages/myLike/myLike',
         });
     },
-    clickMyCollect(){
+    clickMyCollect() {
         wx.navigateTo({
             url: '/pages/myCollect/myCollect',
         });
@@ -56,10 +67,10 @@ Page({
             url: '/pages/myStrategy/myStrategy',
         });
     },
-    edit(){
-     wx.navigateTo({
-         url: '/pages/edit/edit',
-     });
+    edit() {
+        wx.navigateTo({
+            url: '/pages/edit/edit',
+        });
     },
     /**
      * 生命周期函数--监听页面卸载

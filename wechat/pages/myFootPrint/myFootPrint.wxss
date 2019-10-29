@@ -1,0 +1,32 @@
+.footPrint-img{
+    width:100%;
+    height:300rpx;
+}
+.view-item{
+    padding-left:20rpx;
+    border:solid 1rpx #777;
+    margin:20rpx;
+    padding-top:20rpx;
+    border-radius: 20rpx;
+}
+.item{
+    display:flex;
+}
+.category-iron{
+    width:50rpx;
+    height:50rpx;
+}
+.view-introduce{
+    padding-left:2rpx;
+    padding-right:2rpx;
+    font-size: 24rpx;
+    line-height: 34rpx;
+    color: #777;
+    margin-top: 4rpx;
+    height: 102rpx;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+    word-break: break-all;
+}

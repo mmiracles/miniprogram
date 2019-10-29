@@ -6,7 +6,7 @@ Page({
      */
     data: {
         signature: '',
-        textnum:0
+        textnum: 0
     },
 
     /**
@@ -22,24 +22,23 @@ Page({
         this.setData({
             signature: e.detail.value
         })
-            var count = e.detail.cursor
-            //是否超出限制
-            if (count <= 50) {
-                this.setData({
-                    textnum: count
-                })
-            }
+        var count = e.detail.cursor
+        //是否超出限制
+        if (count <= 50) {
+            this.setData({
+                textnum: count
+            })
+        }
     },
     bindFormSubmit: function(e) {
-        const userInfo = getApp().globalData.userInfo;
-        util.ajax.post('/user/changeInfo', {
+        const userInfo = wx.getStorageSync('userInfo');
+        util.ajax.post('/travel/user/changeInfo', {
             signature: this.data.signature,
             userId: userInfo.userId,
         }, (res) => {
-            if (res.code == 0) {
-                userInfo.signature = this.data.signature;
-                wx.navigateBack();
-            }
+            userInfo.signature = this.data.signature;
+            wx.setStorageSync('userInfo', userInfo);
+            wx.navigateBack();
         });
     },
 

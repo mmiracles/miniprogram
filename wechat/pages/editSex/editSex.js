@@ -19,45 +19,43 @@ Page({
             },
         ]
     },
-    requestSex(){
-        let url ="/user/changeInfo"
-        let data={
-            sex:this.data.sex
+    requestSex() {
+        let url = "/travel/user/changeInfo"
+        let data = {
+            sex: this.data.sex
         }
-        util.ajax.get(url,data)
+        util.ajax.get(url, data)
     },
-    radioChange: function (e) {
+    radioChange: function(e) {
         console.log('radio发生change事件，携带value值为：', e.detail.value)
-        this.data.gender=e.detail.value
-        
+        this.data.gender = e.detail.value
     },
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function(options) {
-            this.data.sex = options.sex
+        this.data.sex = options.sex
         if (this.data.sex == "男") {
             console.log("男")
             this.data.items[0].checked = true
-            
+
         } else {
-            this.data.items[1].checked=true
+            this.data.items[1].checked = true
         }
         this.setData({
             items: this.data.items
         })
-        
+
     },
-    bindFormSubmit: function (e) {
-        const userInfo = getApp().globalData.userInfo;
-        util.ajax.post('/user/changeInfo', {
+    bindFormSubmit: function(e) {
+        const userInfo = wx.getStorageSync('userInfo');
+        util.ajax.post('/travel/user/changeInfo', {
             gender: this.data.gender,
             userId: userInfo.userId,
         }, (res) => {
-            if (res.code == 0) {
-                userInfo.gender = this.data.gender;
-                wx.navigateBack();
-            }
+            userInfo.gender = this.data.gender;
+            wx.setStorageSync('userInfo', userInfo);
+            wx.navigateBack();
         });
     },
 

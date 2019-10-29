@@ -16,48 +16,43 @@
         </view>
     </view>
 </view>
-<form catchsubmit="formSubmit" catchreset="formReset" id="search-form">
-    <view class="search-pancel">
-        <input value="" id="search-input" name="input" confirm-type="search" class="search-input" placeholder=" 搜索你感兴趣的内容..." bindconfirm="formSubmit"></input>
-        <button class="search-button" form-type="submit" size="mini" plain="true">
-            <icon type="search" color="#959595" size="12" />
-        </button>
-    </view>
-</form>
+<view class="search-pancel">
+    <input value="" id="search-input" name="input" confirm-type="search" class="search-input" placeholder=" 搜索你感兴趣的内容..." bindconfirm="formSubmit" value="{{searchWords}}" bindinput="searchInput"></input>
+    <button class="search-button" data-type="搜索" form-type="submit" size="mini" plain="true" bindtap="formSubmit">
+        <icon type="search" color="#959595" size="12" />
+    </button>
+</view>
 <view class="list">
-    <view class="item" id="1" bindtap="toList">
+    <view class="item" data-type="景点" bindtap="toList">
         <image class="item-img" src="/images/Attractions.png"></image>
         <view class="item-text">景点</view>
     </view>
-    <view class="item" id="2" bindtap="toList">
+    <view class="item" data-type="攻略" bindtap="toList">
         <image class="item-img" src="/images/Travels.png"></image>
         <view class="item-text">攻略</view>
     </view>
-    <view class="item" id="3"  bindtap="toList">
+    <view class="item" data-type="游记" bindtap="toList">
         <image class="item-img" src="/images/Strategy.png"></image>
         <view class="item-text">游记</view>
     </view>
 </view>
-<view class="show" bindtap="toDetail">
-    <image class="show-image" src="/images/test.png"></image>
-    <view>
-        <view class="show-text">测试测试测试测试测试测试测试测试输出搜索</view>
-        <view class="show-bottom">
-            <view style="background-image: url(/images/category-o.png)">呵呵呵</view>
-            <view style="background-image: url(/images/views-o.png)">4</view>
-            <view style="background-image: url(/images/comments-o.png)">12</view>
+<view class ="view-item" wx:for="{{viewList}}">
+        <view class ="item">
+            <image  class ="category-iron" src="/images/category1.png"></image>
+            <view class="view-classify">分类：{{item.classify}}</view>
         </view>
-    </view>
-</view>
-<view class="show">
-    <image class="show-image" src="/images/test.png"></image>
-    <view>
-        <view class="show-text">测试测试测试测试测试测试测试测试输出搜索</view>
-        <view class="show-bottom">
-            <view style="background-image: url(/images/category-o.png)">呵呵呵</view>
-            <view style="background-image: url(/images/views-o.png)">4</view>
-            <view style="background-image: url(/images/comments-o.png)">12</view>
+         <view class ="item">
+            <image  class ="category-iron" src="/images/view.png"></image>
+            <view class ="view-Name">打卡景点：{{item.viewName}}</view>
         </view>
-    </view>
+         <view class ="item">
+            <image  class ="category-iron" src="/images/addr.png"></image>
+              <view class="view-location">景点地址：{{item.location}}</view>
+        </view>
+         <view class ="item">
+            <image  class ="category-iron" src="/images/time.png"></image>
+            <view class="view-opentime">开放时间：{{item.opentime}}</view>
+        </view>
 </view>
-
+<view class="no-more-data" wx:if="{{isMore}}">上拉加载更多~</view>
+<view class="no-more-data" wx:else>没有更多啦~</view>

@@ -9,15 +9,14 @@ Page({
         userName: null,
     },
     clickSubmit: function(e) {
-        const userInfo = getApp().globalData.userInfo;
-        util.ajax.post('/user/changeInfo', {
+        const userInfo = wx.getStorageSync('userInfo');
+        util.ajax.post('/travel/user/changeInfo', {
             userId: userInfo.userId,
             userName: this.data.userName
         }, (res) => {
-            if (res.code == 0) {
-                userInfo.userName = this.data.userName;
-                wx.navigateBack();
-            }
+            userInfo.userName = this.data.userName;
+            wx.setStorageSync('userInfo', userInfo);
+            wx.navigateBack();
         });
     },
     userNameInput(e) {

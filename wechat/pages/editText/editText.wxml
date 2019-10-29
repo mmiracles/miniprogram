@@ -1,6 +1,8 @@
 <!--pages/editText/editText.wxml-->
 <view class="section">
-    <textarea class="edit-form" placeholder="请输入签名" value="{{signature}}" bindinput="signatureInput" maxlength='50'/>
-    <view class="weui-textarea-counter">{{textnum}}/50</view>
-    <button  class="edit-button" bindtap="bindFormSubmit">确认修改 </button>
+    <view class="text-box">
+        <textarea class="edit-form" placeholder="请输入签名" value="{{signature}}" bindinput="signatureInput" maxlength='50' />
+        <view class="weui-textarea-counter">{{textnum}}/50</view>
+    </view>
+    <button class="edit-button" bindtap="bindFormSubmit">确认修改 </button>
 </view>

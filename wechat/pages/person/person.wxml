@@ -1,7 +1,7 @@
 <!--pages/person/person.wxml-->
 <view class="kind-container">
     <view class="top-info">
-        <image src="/imgs/test.png"></image>
+        <image src="/imgs/avatar.png"></image>
         <view>{{userName}}</view>
     </view>
     <view class="kind-list">
@@ -22,7 +22,7 @@
 
         </view>
 
-        <view class="kind-list-item" >
+        <view class="kind-list-item" bindtap="clickMyfootprint" >
             <image class="kind-list-icon" src="/images/check mark, tick, se.png"></image>
             <view class="kind-list-text">打卡记录</view>
             <image class="navigator-arrow" src="/images/right-arrow.png"></image>
@@ -33,6 +33,6 @@
             <view class="kind-list-text">解绑微信</view>
             <image class="navigator-arrow" src="/images/right-arrow.png"></image>
         </view>
-        <button class="exit" type="warn" size="{{warnSize}}" loading="{{loading}}" plain="{{plain}}" disabled="{{disabled}}" bindtap="warn"> 退出登录 </button>
+        <button class="exit" type="warn" size="{{warnSize}}" loading="{{loading}}" plain="{{plain}}" disabled="{{disabled}}" bindtap="clickExit"> 退出登录 </button>
     </view>
 </view>

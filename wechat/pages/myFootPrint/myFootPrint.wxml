@@ -1,0 +1,24 @@
+<!--pages/myFootPrint/myFootPrint.wxml-->
+<view class ="container">
+<image class ="footPrint-img" src="/images/1.5.jpg"></image>
+    <view class ="view-item" wx:for="{{footPrint}}" bindtap="toDetail" data-type="景点">
+        <view class ="item">
+            <image  class ="category-iron" src="/images/category1.png"></image>
+            <view class="view-classify">分类：{{item.classify}}</view>
+        </view>
+         <view class ="item">
+            <image  class ="category-iron" src="/images/view.png"></image>
+            <view class ="view-Name">打卡景点：{{item.viewName}}</view>
+        </view>
+         <view class ="item">
+            <image  class ="category-iron" src="/images/addr.png"></image>
+              <view class="view-location">景点地址：{{item.location}}</view>
+        </view>
+         <view class ="item">
+            <image  class ="category-iron" src="/images/time.png"></image>
+            <view class="view-opentime">开放时间：{{item.opentime}}</view>
+        </view>
+    </view>
+           <view class="no-more-data" wx:if="{{isMore}}">上拉加载更多~</view>
+            <view class="no-more-data" wx:else>没有更多啦~</view>
+</view>

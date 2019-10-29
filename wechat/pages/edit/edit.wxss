@@ -45,4 +45,7 @@
     width: 400rpx;
     text-align: right;
     color: #777;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }

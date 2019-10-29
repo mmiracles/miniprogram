@@ -18,9 +18,8 @@
         </view>
         <view class="item" bindtap="clickMeedit">
             <text class="id">个性签名</text>
-            <text class="id-content ">{{signature}}</text>
+            <text class="id-content">{{signature}}</text>
             <image class="navigator-arrow " src="/images/right-arrow.png "></image>
         </view>
-
     </view>
 </view>

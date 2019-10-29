@@ -361,3 +361,11 @@
   top:0;
   left: 0;
 }
+
+/* 没有更多 公共样式误删 */
+.no-more-data{
+    font-size: 24rpx;
+    color: #999;
+    padding: 6rpx;
+    text-align: center;
+}

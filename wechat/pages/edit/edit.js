@@ -38,7 +38,7 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function() {
-        const userInfo = getApp().globalData.userInfo;
+        const userInfo = wx.getStorageSync('userInfo');
         this.setData({
             userName: userInfo.userName,
             gender: userInfo.gender,

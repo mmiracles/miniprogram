@@ -1,113 +1,26 @@
 <!--pages/myCollect/myCollect.wxml-->
 <view class="list-page">
     <view class="article-list">
-        <view class="article-item">
-            <image src="/imgs/test.png" class="article-img"></image>
+        <view class="article-item" wx:for="{{collectList}}" data-type="文章" bindtap="toDetail">
+            <image src="{{item.imgUrl}}" class="article-img"></image>
             <view class="article-info-box">
                 <view class="article-title-box">
                     <image class="article-icon" src="/imgs/icon.png"></image>
-                    <view class="article-title">省博物馆</view>
+                    <view class="article-title">{{item.title}}</view>
                 </view>
-                <view class="article-text">武汉 哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈韩哈日呵呵</view>
+                <view class="article-text">{{item.content}}</view>
                 <view class="article-bottom">
-                    <image src="/imgs/icon.png"></image>
+                    <image src="/imgs/avatar.png"></image>
                     <view class="article-user-box">
-                        <view class="article-user">哈哈哈</view>
-                        <view class="article-date">2019-08-10</view>
+                        <view class="article-user">{{item.authorName}}</view>
+                        <view class="article-date">{{item.createTime}}</view>
                     </view>
-                    <text>❤ 49</text>
-                </view>
-            </view>
-        </view>
-        <view class="article-item">
-            <image src="/imgs/test.png" class="article-img"></image>
-            <view class="article-info-box">
-                <view class="article-title-box">
-                    <image class="article-icon" src="/imgs/icon.png"></image>
-                    <view class="article-title">省博物馆</view>
-                </view>
-                <view class="article-text">武汉 哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈韩哈日呵呵</view>
-                <view class="article-bottom">
-                    <image src="/imgs/icon.png"></image>
-                    <view class="article-user-box">
-                        <view class="article-user">哈哈哈</view>
-                        <view class="article-date">2019-08-10</view>
-                    </view>
-                    <text>❤ 49</text>
-                </view>
-            </view>
-        </view>
-        <view class="article-item">
-            <image src="/imgs/test.png" class="article-img"></image>
-            <view class="article-info-box">
-                <view class="article-title-box">
-                    <image class="article-icon" src="/imgs/icon.png"></image>
-                    <view class="article-title">省博物馆</view>
-                </view>
-                <view class="article-text">武汉 哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈韩哈日呵呵</view>
-                <view class="article-bottom">
-                    <image src="/imgs/icon.png"></image>
-                    <view class="article-user-box">
-                        <view class="article-user">哈哈哈</view>
-                        <view class="article-date">2019-08-10</view>
-                    </view>
-                    <text>❤ 49</text>
-                </view>
-            </view>
-        </view>
-        <view class="article-item">
-            <image src="/imgs/test.png" class="article-img"></image>
-            <view class="article-info-box">
-                <view class="article-title-box">
-                    <image class="article-icon" src="/imgs/icon.png"></image>
-                    <view class="article-title">省博物馆</view>
-                </view>
-                <view class="article-text">武汉 哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈韩哈日呵呵</view>
-                <view class="article-bottom">
-                    <image src="/imgs/icon.png"></image>
-                    <view class="article-user-box">
-                        <view class="article-user">哈哈哈</view>
-                        <view class="article-date">2019-08-10</view>
-                    </view>
-                    <text>❤ 49</text>
-                </view>
-            </view>
-        </view>
-        <view class="article-item">
-            <image src="/imgs/test.png" class="article-img"></image>
-            <view class="article-info-box">
-                <view class="article-title-box">
-                    <image class="article-icon" src="/imgs/icon.png"></image>
-                    <view class="article-title">省博物馆</view>
-                </view>
-                <view class="article-text">武汉 哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈韩哈日呵呵</view>
-                <view class="article-bottom">
-                    <image src="/imgs/icon.png"></image>
-                    <view class="article-user-box">
-                        <view class="article-user">哈哈哈</view>
-                        <view class="article-date">2019-08-10</view>
-                    </view>
-                    <text>❤ 49</text>
-                </view>
-            </view>
-        </view>
-        <view class="article-item">
-            <image src="/imgs/test.png" class="article-img"></image>
-            <view class="article-info-box">
-                <view class="article-title-box">
-                    <image class="article-icon" src="/imgs/icon.png"></image>
-                    <view class="article-title">省博物馆</view>
-                </view>
-                <view class="article-text">武汉 哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈韩哈日呵呵</view>
-                <view class="article-bottom">
-                    <image src="/imgs/icon.png"></image>
-                    <view class="article-user-box">
-                        <view class="article-user">哈哈哈</view>
-                        <view class="article-date">2019-08-10</view>
-                    </view>
-                    <text>❤ 49</text>
+                    <image class="heart-img" src="/images/collected.png"></image>
+                    <text> {{item.greatNum}}</text>
                 </view>
             </view>
         </view>
     </view>
+    <view class="no-more-data" wx:if="{{isMore}}">上拉加载更多~</view>
+    <view class="no-more-data" wx:else>没有更多啦~</view>
 </view>

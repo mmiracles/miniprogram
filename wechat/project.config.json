@@ -9,36 +9,16 @@
 		"postcss": true,
 		"minified": true,
 		"newFeature": true,
-		"coverView": true,
-		"autoAudits": false,
-		"checkInvalidKey": true,
-		"checkSiteMap": true,
-		"uploadWithSourceMap": true,
-		"babelSetting": {
-			"ignore": [],
-			"disablePlugins": [],
-			"outputPath": ""
-		}
+		"autoAudits": false
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.9.0",
-<<<<<<< HEAD
-	"appid": "wx9994fec45bf33caa",
-	"projectname": "miniprogram-1",
-	"cloudfunctionTemplateRoot": "",
+	"appid": "wx65d37380e5aa3ab2",
+	"projectname": "mini",
 	"debugOptions": {
 		"hidedInDevtools": []
 	},
 	"scripts": {},
-=======
-	"appid": "wx65d37380e5aa3ab2",
-	"projectname": "wechat",
-	"debugOptions": {
-		"hidedInDevtools": []
-	},
->>>>>>> d63dea0f98d09a8636d0fa89bcb6a2be3cb4edae
-	"simulatorType": "wechat",
-	"simulatorPluginLibVersion": {},
 	"condition": {
 		"search": {
 			"current": -1,
@@ -56,11 +36,7 @@
 			"list": []
 		},
 		"miniprogram": {
-<<<<<<< HEAD
-			"current": 8,
-=======
-			"current": 9,
->>>>>>> d63dea0f98d09a8636d0fa89bcb6a2be3cb4edae
+			"current": 12,
 			"list": [
 				{
 					"id": -1,
@@ -100,25 +76,6 @@
 				},
 				{
 					"id": -1,
-<<<<<<< HEAD
-					"name": "pages/regist/regist",
-					"pathName": "pages/regist/regist",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/test/test",
-					"pathName": "pages/test/test",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/rand/rand",
-					"pathName": "pages/rand/rand",
-					"scene": null
-=======
 					"name": "register",
 					"pathName": "pages/regist/regist",
 					"query": ""
@@ -138,8 +95,25 @@
 				{
 					"id": -1,
 					"name": "editInfo",
-					"pathName": "pages/editInfo/editInfo"
->>>>>>> d63dea0f98d09a8636d0fa89bcb6a2be3cb4edae
+					"pathName": "pages/editInfo/editInfo",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "editSex",
+					"pathName": "pages/editSex/editSex",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "footprint",
+					"pathName": "pages/myFootPrint/myFootPrint",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "footprint",
+					"pathName": "pages/index/index"
 				}
 			]
 		}
